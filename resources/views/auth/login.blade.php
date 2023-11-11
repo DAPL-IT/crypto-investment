@@ -11,7 +11,7 @@
                     <img src="" alt="">
                 </div>
                 <h4 class="text-center mb-4">Login to your account</h4>
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('login-store') }}">
                     @csrf
                     <div class="row">
                         <div class="form-group col-12">
