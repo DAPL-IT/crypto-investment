@@ -3,18 +3,18 @@
 
         <ul class="metismenu" id="menu">
             <li>
-                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                <a class="" href="{{ route('dashboard') }}">
                     <i class="flaticon-144-layout"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
-                <ul aria-expanded="false">
+                {{--  <ul aria-expanded="false">
                     <li><a href="index.html">Dashboard</a></li>
                     <li><a href="my-wallets.html">Wallet</a></li>
                     <li><a href="tranasactions.html">Transactions</a></li>
                     <li><a href="coin-details.html">Coin Details</a></li>
                     <li><a href="portofolio.html">Portofolio</a></li>
                     <li><a href="market-capital.html">Market Capital</a></li>
-                </ul>
+                </ul>  --}}
             </li>
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
@@ -24,9 +24,10 @@
                 <ul aria-expanded="false">
                     <li><a href="{{ route('banner_slider.index') }}">Banner</a></li>
                     <li><a href="{{ route('news_slider.index') }}">News</a></li>
-                    <li><a href="tranasactions.html">App Info</a></li>
+                    {{--  <li><a href="tranasactions.html">App Info</a></li>  --}}
                 </ul>
             </li>
+            {{--
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-077-menu-1"></i>
@@ -165,7 +166,7 @@
                     </li>
                     <li><a href="./page-lock-screen.html">Lock Screen</a></li>
                 </ul>
-            </li>
+            </li>  --}}
         </ul>
     </div>
 </div>
