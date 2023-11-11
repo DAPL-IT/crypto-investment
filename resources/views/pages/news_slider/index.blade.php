@@ -8,8 +8,8 @@
     <div class="row px-1 mb-3">
         <div class="col-12 p-md-0">
             <div class="welcome-text px-md-4 px-1">
-                <h6>Manage News</h6>
-                <span style="font-size: 8pt;">You can upload and delete news</span>
+                <h4>Manage News</h4>
+                <span style="font-size: 9pt;">You can upload and delete news</span>
             </div>
         </div>
     </div>
@@ -22,9 +22,9 @@
                         <form method="POST" action="{{ route('news_slider.create') }}">
                             @csrf
                             @method('POST')
-                            <div class="input-group input-group-sm">
-                                <input type="text" class="form-control input-rounded custom-input-group-field"
-                                    name="news" id="newsInputField" placeholder="Type..." required>
+                            <div class="input-group">
+                                <input type="text" class="form-control input-rounded " name="news" id="newsInputField"
+                                    placeholder="Type..." required>
                                 <div class="input-group-append">
                                     <button class="btn btn-info custom-input-group-btn" type="submit"><i
                                             class="fa-solid fa-plus"></i>&nbsp;Save

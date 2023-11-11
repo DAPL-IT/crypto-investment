@@ -8,8 +8,8 @@
     <div class="row px-1 mb-3">
         <div class="col-12 p-md-0">
             <div class="welcome-text px-md-4 px-1">
-                <h6>Manage Banners</h6>
-                <span style="font-size: 8pt;">You can upload and delete banners</span>
+                <h4>Manage Banners</h4>
+                <span style="font-size: 10pt;">You can upload and delete banners</span>
             </div>
         </div>
     </div>
@@ -22,10 +22,9 @@
                         <form method="POST" action="{{ route('banner_slider.create') }}" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
-                            <div class="input-group input-group-sm">
-                                <input type="file" class="form-control input-rounded custom-input-group-field"
-                                    name="banner" accept=".jpg, .jpeg, .png" id="bannerInputField" required
-                                    autocomplete="off">
+                            <div class="input-group">
+                                <input type="file" class="form-control input-rounded " name="banner"
+                                    accept=".jpg, .jpeg, .png" id="bannerInputField" required autocomplete="off">
                                 <div class="input-group-append">
                                     <button class="btn btn-info custom-input-group-btn" type="submit"><i
                                             class="fa-solid fa-upload"></i>&nbsp;Upload
