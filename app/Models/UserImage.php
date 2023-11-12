@@ -10,8 +10,8 @@ class UserImage extends Model
 {
     use HasFactory;
 
-    const THUMB_DIR = 'images/users/thumbnails';
-    const ICON_DIR = 'images/users/icons';
+    const THUMB_DIR = 'images/users/thumbnails/';
+    const ICON_DIR = 'images/users/icons/';
 
     protected $fillable = [
         'thumb_size_dir',
@@ -21,7 +21,6 @@ class UserImage extends Model
     ];
 
     protected $hidden = [
-        'file_name',
         'icon_size_dir',
         'thumb_size_dir'
     ];
@@ -31,14 +30,14 @@ class UserImage extends Model
     protected function thumbFullPath(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->attributes['thumb_size_dir'] . '/' . $this->attributes['file_name'],
+            get: fn () => $this->attributes['thumb_size_dir'] . $this->attributes['file_name'],
         );
     }
 
     protected function iconFullPath(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->attributes['icon_size_dir'] . '/' . $this->attributes['file_name'],
+            get: fn () => $this->attributes['icon_size_dir'] . $this->attributes['file_name'],
         );
     }
 

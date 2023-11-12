@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+@php
+    $appName = 'App Name';
+
+    if (file_exists('app_configs/app_settings.json')) {
+        $appSettingsPath = public_path('app_configs/app_settings.json');
+        $getAppName = json_decode(file_get_contents($appSettingsPath), true);
+        $appName = $getAppName['app_name'] ?? $appName;
+    }
+
+@endphp
 
 <head>
     @include('template.includes.head')

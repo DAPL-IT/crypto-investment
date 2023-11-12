@@ -9,7 +9,7 @@
         <div class="col-12 p-md-0">
             <div class="welcome-text px-md-4 px-1">
                 <h4>Manage Banners</h4>
-                <span style="font-size: 10pt;">You can upload and delete banners</span>
+                <span style="font-size: 8pt;">You can upload and delete banners</span>
             </div>
         </div>
     </div>
@@ -41,13 +41,14 @@
                         <ul class="list-group">
                             @foreach ($allBanners as $single)
                                 <li class="list-group-item d-flex justify-content-between align-items-center px-2">
-                                    <img style="width: 100px;" class="img-thumbnail"
-                                        src="{{ asset($single->banner_full_path) }}" alt="{{ $single->file_name }}">
+                                    <img class="img-fluid col-sm-11 col-xs-10" src="{{ asset($single->banner_full_path) }}"
+                                        alt="{{ $single->file_name }}" style="max-height: 105px;">
                                     <form action="{{ route('banner_slider.delete', ['id' => $single->id]) }}"
                                         method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger shadow btn-xs sharp delete">
+                                        <button type="submit"
+                                            class="btn btn-danger shadow btn-xs sharp delete col-sm-1 col-xs-2">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
