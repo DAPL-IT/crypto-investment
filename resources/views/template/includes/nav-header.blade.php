@@ -9,10 +9,12 @@
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown">
                             @if (Auth::user()->user_image)
                                 <img src="{{ asset(Auth::user()->user_image->icon_full_path) }}"
-                                    style="width: 40px !important; height: 40px !important;" alt="" />
+                                    style="width: 40px !important; height: 40px !important;"
+                                    alt="{{ Auth::user()->username }}" />
                             @else
                                 <img src="https://ui-avatars.com/api/?name={{ Auth::user()->username }}&background=f3f3f3&color=444444"
-                                    style="width: 40px !important; height: 40px !important;" alt="" />
+                                    style="width: 40px !important; height: 40px !important;"
+                                    alt="{{ Auth::user()->username }}" />
                             @endif
                             <div class="header-info">
                                 <span class="text-uppercase"
@@ -22,7 +24,7 @@
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="./app-profile.html" class="dropdown-item ai-icon">
+                            <a href="{{ route('user_profile.index') }}" class="dropdown-item ai-icon">
                                 <i class="fa-regular fa-user text-primary"></i>
                                 <span class="ml-2">Profile </span>
                             </a>

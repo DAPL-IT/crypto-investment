@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AppSettingController;
 use App\Http\Controllers\Admin\BannerSliderController;
 use App\Http\Controllers\Admin\NewsSliderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -49,5 +50,12 @@ Route::middleware('auth')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::put('/{id}', 'update')->name('update');
             route::get('/optimize', 'optimize')->name('optimize');
+        });
+
+    Route::prefix('profile')
+        ->controller(UserProfileController::class)
+        ->name('user_profile.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
         });
 });
