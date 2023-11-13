@@ -7,8 +7,13 @@
 
                     <li class="nav-item dropdown header-profile">
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                            <img src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png"
-                                style="width: 40px !important; height: 40px !important;" alt="" />
+                            @if (Auth::user()->user_image)
+                                <img src="{{ asset(Auth::user()->user_image->icon_full_path) }}"
+                                    style="width: 40px !important; height: 40px !important;" alt="" />
+                            @else
+                                <img src="https://ui-avatars.com/api/?name={{ Auth::user()->username }}&background=f3f3f3&color=444444"
+                                    style="width: 40px !important; height: 40px !important;" alt="" />
+                            @endif
                             <div class="header-info">
                                 <span class="text-uppercase"
                                     style="font-size: 10pt !important;">{{ Auth::user()->username }}</span>
