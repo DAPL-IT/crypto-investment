@@ -28,7 +28,7 @@ class BannerSlider extends Model
     protected function bannerFullPath(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->attributes['banner_dir'] . '/' . $this->attributes['file_name'],
+            get: fn () => $this->attributes['banner_dir'] . $this->attributes['file_name'],
         );
     }
 }

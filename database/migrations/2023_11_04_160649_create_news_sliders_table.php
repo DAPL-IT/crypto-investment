@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('news_sliders', function (Blueprint $table) {
             $table->id();
-            $table->string('news', 100);
+            $table->string('news', 200);
             $table->unsignedMediumInteger('view_order')->nullable()->default(0);
             $table->timestamps();
         });

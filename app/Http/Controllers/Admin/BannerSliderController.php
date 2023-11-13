@@ -46,7 +46,7 @@ class BannerSliderController extends Controller
         try {
             Image::make($reqFile)
                 ->resize(900, 450)
-                ->encode($fileExtension, 50)
+                ->encode($fileExtension, 75)
                 ->save($fileDir . $newFileName);
         } catch (Exception $e) {
             return back()->with($this->errorAlert('Failed to upload!'));

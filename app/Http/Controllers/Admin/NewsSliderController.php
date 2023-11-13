@@ -22,12 +22,12 @@ class NewsSliderController extends Controller
 
         $request->validate(
             [
-                'news' => 'required|min:3|max:100',
+                'news' => 'required|min:3|max:200',
             ],
             [
                 'news.required' => 'News input field is required',
                 'news.min' => 'Minimum 3 letters required',
-                'news.max' => 'Maximum 100 letters allowed'
+                'news.max' => 'Maximum 200 letters allowed'
             ]
         );
 

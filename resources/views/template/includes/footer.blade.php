@@ -1,5 +1,5 @@
 <div class="footer">
     <div class="copyright">
-      <p>Copyright © Designed</p>
+        <p>Copyright © {{ $appName }}</p>
     </div>
-  </div>
+</div>
