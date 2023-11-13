@@ -233,7 +233,7 @@
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col-md-1 col-2 ">
-                            <img src="{{ asset('images/template/announcement.png') }}" alt="">
+                            <img src="{{ asset('images/assets/megaphone.png') }}" alt="" style="width: 35px">
                         </div>
                         <div class="col-md-11 col-10 ">
                             <marquee direction="left" scrollamount="5">
