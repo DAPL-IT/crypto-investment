@@ -35,9 +35,9 @@
                                     64x64</small>
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-sm btn-info" type="submit"><i
+                                <button class="btn btn-xs btn-info" type="submit"><i
                                         class="fa-solid fa-floppy-disk"></i>&ensp;Save</button>
-                                <a href={{ route('app_settings.optimize') }} class="btn btn-sm btn-success text-white"><i
+                                <a href={{ route('app_settings.optimize') }} class="btn btn-xs btn-success text-white"><i
                                         class="fa-solid fa-rotate"></i>&ensp;Optimize App</a>
                             </div>
                         </form>
