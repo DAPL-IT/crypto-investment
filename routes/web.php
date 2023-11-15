@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('app-settings')
         ->controller(AppSettingController::class)
         ->name('app_settings.')
+        ->middleware(['admin'])
         ->group(function () {
             Route::get('/', 'index')->name('index');
             Route::put('/{id}', 'update')->name('update');

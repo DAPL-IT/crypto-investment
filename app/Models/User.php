@@ -81,4 +81,14 @@ class User extends Authenticatable
         return $this->hasMany(Withdraw::class, 'user_id', 'id')
             ->with('payment_gateway');
     }
+
+    public function isSuperAdmin()
+    {
+        return $this->attributes['account_type'] === 'super_admin';
+    }
+
+    public function isAdmin()
+    {
+        return $this->attributes['account_type'] === 'admin';
+    }
 }
