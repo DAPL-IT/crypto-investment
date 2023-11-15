@@ -19,8 +19,8 @@
                             <div class="header-info">
                                 <span class="text-uppercase"
                                     style="font-size: 10pt !important;">{{ Auth::user()->username }}</span>
-                                <small class="text-uppercase"
-                                    style="font-size: 10pt !important;">{{ Auth::user()->account_type }}</small>
+                                {{-- <small class="text-uppercase"
+                                    style="font-size: 10pt !important;">{{ Auth::user()->account_type }}</small> --}}
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
