@@ -19,46 +19,90 @@
                 <div class="profile-head">
                     <div class="profile-info">
                         <div>
-                            @if (Auth::user()->user_image)
-                                <img style="width: 80px" src="{{ asset(Auth::user()->user_image->icon_full_path) }}"
-                                    class="img-fluid rounded" alt="{{ Auth::user()->username }}" />
+                            @if ($user->user_image)
+                                <img style="width: 80px" src="{{ asset($user->user_image->icon_full_path) }}"
+                                    class="img-fluid rounded" alt="{{ $user->username }}" />
                             @else
                                 <img style="width: 80px"
-                                    src="https://ui-avatars.com/api/?name={{ Auth::user()->username }}&background=f3f3f3&color=444444"
-                                    class="img-fluid rounded" alt="{{ Auth::user()->username }}" />
+                                    src="https://ui-avatars.com/api/?name={{ $user->username }}&background=f3f3f3&color=444444"
+                                    class="img-fluid rounded" alt="{{ $user->username }}" />
                             @endif
                         </div>
                         <div class="profile-details">
                             <div class="profile-name px-3 pt-2">
-                                <h4 class="text-primary mb-0">Mitchell C. Shay</h4>
-                                <p>UX / UI Designer</p>
+                                <h4 class="text-primary mb-0">{{ $user->username }}</h4>
+                                <p class="text-lowercase">{{ $user->account_type }}</p>
                             </div>
-                            <div class="profile-email px-2 pt-2">
-                                <h4 class="text-muted mb-0">info@example.com</h4>
-                                <p>Email</p>
-                            </div>
+
                             <div class="dropdown ml-auto">
                                 <a href="#" class="btn btn-xs btn-danger light sharp" data-toggle="dropdown"
-                                    aria-expanded="true"><svg xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px"
-                                        viewBox="0 0 24 24" version="1.1">
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect x="0" y="0" width="24" height="24"></rect>
-                                            <circle fill="#000000" cx="5" cy="12" r="2"></circle>
-                                            <circle fill="#000000" cx="12" cy="12" r="2"></circle>
-                                            <circle fill="#000000" cx="19" cy="12" r="2"></circle>
-                                        </g>
-                                    </svg></a>
+                                    aria-expanded="true"><i class="fa-solid fa-ellipsis"></i></a>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li class="dropdown-item"><i class="fa fa-user-circle text-primary mr-2"></i> View
-                                        profile</li>
-                                    <li class="dropdown-item"><i class="fa fa-users text-primary mr-2"></i> Add to close
-                                        friends</li>
-                                    <li class="dropdown-item"><i class="fa fa-plus text-primary mr-2"></i> Add to group</li>
-                                    <li class="dropdown-item"><i class="fa fa-ban text-primary mr-2"></i> Block</li>
+                                    <li class="dropdown-item">Edit General</li>
+                                    @if ($user->user_profile)
+                                        <li class="dropdown-item">Edit Details</li>
+                                    @endif
+                                    <li class="dropdown-item">Change Password</li>
+                                    <li class="dropdown-item">Profile Image</li>
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="profile-tab">
+                        <div class="custom-tab-1">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item"><a href="#about-me" data-toggle="tab"
+                                        class="nav-link show active"><small>General</small></a>
+                                </li>
+                                <li class="nav-item"><a href="#profile-settings" data-toggle="tab"
+                                        class="nav-link"><small>Details</small></a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+
+                                <div id="about-me" class="tab-pane fade active show">
+                                    <div class="pt-3 profile-personal-info">
+                                        <div class="row mb-2">
+                                            <div class="col-sm-3 col-5">
+                                                <p class="f-w-500"><small>Name</small> <small class="pull-right">:</small>
+                                                </p>
+                                            </div>
+                                            <div class="col-sm-9 col-7"><small>Mitchell C.Shay</small>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div id="profile-settings" class="tab-pane fade">
+                                    <div class="pt-3 profile-personal-info">
+                                        @if ($user->user_profile)
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <p class="f-w-500"><small>Name</small> <small
+                                                            class="pull-right">:</small>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-9 col-7"><small>Mitchell C.Shay</small>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class="text-center">
+                                                <button class="btn btn-xs btn-primary">Add</button>
+                                            </div>
+                                        @endif
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

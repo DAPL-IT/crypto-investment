@@ -8,20 +8,19 @@
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
-            <li>
-                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-381-settings-2"></i>
-                    <span class="nav-text">Settings</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('banner_slider.index') }}">Banner</a></li>
-                    <li><a href="{{ route('news_slider.index') }}">News</a></li>
-                    @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
+            @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
+                <li>
+                    <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                        <i class="flaticon-381-settings-2"></i>
+                        <span class="nav-text">Settings</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a href="{{ route('banner_slider.index') }}">Banner</a></li>
+                        <li><a href="{{ route('news_slider.index') }}">News</a></li>
                         <li><a href="{{ route('app_settings.index') }}">App</a></li>
-                    @endif
-                </ul>
-            </li>
-
+                    </ul>
+                </li>
+            @endif
         </ul>
     </div>
 </div>
