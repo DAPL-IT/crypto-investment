@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserProfileController extends Controller
 {
@@ -11,7 +13,12 @@ class UserProfileController extends Controller
      */
     public function index()
     {
-        return view('pages.profile.index');
+        $user = User::with('user_image', 'user_invitation_code', 'user_transaction_brief', 'user_profile')->where('id', Auth::user()->id)->first();
+        $inviter = null;
+        if ($user->inviter_id) {
+            $inviter = User::where('id', $user->inviter_id)->first();
+        }
+        return view('pages.profile.index', compact(['inviter', 'user']));
     }
 
     /**

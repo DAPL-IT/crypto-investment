@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('banner-slider')
         ->controller(BannerSliderController::class)
         ->name('banner_slider.')
+        ->middleware(['admin'])
         ->group(function () {
             Route::get('/', 'index')->name('index');
             Route::post('/', 'store')->name('create');
@@ -37,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('news-slider')
         ->controller(NewsSliderController::class)
         ->name('news_slider.')
+        ->middleware(['admin'])
         ->group(function () {
             Route::get('/', 'index')->name('index');
             Route::post('/', 'store')->name('create');
