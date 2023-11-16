@@ -8,7 +8,7 @@
     <div class="row px-1 mb-3">
         <div class="col-12 p-md-0">
             <div class="welcome-text px-md-4 px-1">
-                <h4>Manage App</h4>
+                <h6>Manage App</h6>
             </div>
         </div>
     </div>

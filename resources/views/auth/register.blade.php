@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="form-group col-12">
                             <label class="mb-1">
-                                <strong>Referred By</strong>
+                                <strong>Reference Code</strong>
                             </label>
                             <input type="text" class="form-control" placeholder="Enter (if any)" name="invitation_code"
                                 value="{{ old('invitation_code') }}">

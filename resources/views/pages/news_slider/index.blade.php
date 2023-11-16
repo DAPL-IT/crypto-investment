@@ -8,7 +8,7 @@
     <div class="row px-1 mb-3">
         <div class="col-12 p-md-0">
             <div class="welcome-text px-md-4 px-1">
-                <h4>Manage News</h4>
+                <h6>Manage News</h6>
                 <span style="font-size: 8pt;">You can upload and delete news</span>
             </div>
         </div>
