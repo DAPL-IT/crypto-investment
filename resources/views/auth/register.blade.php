@@ -8,21 +8,21 @@
         <div class="col-xl-12">
             <div class="auth-form">
                 <div class="text-center mb-3">
-                    <img src="" alt="">
+                    <img src="{{ asset('images/site/icon/icon.png') }}" alt="logo">
                 </div>
-                <h4 class="text-center mb-4">Create an account</h4>
+                <h4 class="text-center mb-4 heading">Create an account</h4>
                 <form method="POST" action="{{ route('register') }}" id="registerForm">
                     @csrf
                     <div class="row">
                         <div class="form-group col-12">
-                            <label class="mb-1">
+                            <label class="mb-1 label">
                                 <strong>Reference Code</strong>
                             </label>
                             <input type="text" class="form-control" placeholder="Enter (if any)" name="invitation_code"
                                 value="{{ old('invitation_code') }}">
                         </div>
                         <div class="form-group col-12">
-                            <label class="mb-1">
+                            <label class="mb-1 label">
                                 <strong>Username</strong>
                                 <sup class="text-danger">*</sup>
                             </label>
@@ -32,7 +32,7 @@
                         </div>
                         <small id="usernameErrorText" class="error-text"></small>
                         <div class="form-group col-12">
-                            <label class="mb-1">
+                            <label class="mb-1 label">
                                 <strong>Login Password</strong>
                                 <sup class="text-danger">*</sup>
                             </label>
@@ -44,7 +44,7 @@
                         </div>
                         <small id="pwdErrorText" class="error-text"></small>
                         <div class="form-group col-12">
-                            <label class="mb-1">
+                            <label class="mb-1 label">
                                 <strong>Confirm Password</strong>
                                 <sup class="text-danger">*</sup>
                             </label>
@@ -58,7 +58,7 @@
                         <small id="pwdConfirmErrorText" class="error-text"></small>
 
                         <div class="form-group col-12">
-                            <label class="mb-1">
+                            <label class="mb-1 label">
                                 <strong>Telegram</strong>
                                 <sup class="text-danger">*</sup>
                             </label>
@@ -67,7 +67,7 @@
                         </div>
                         <small id="whatsappErrorText" class="error-text"></small>
                         <div class="form-group col-12">
-                            <label class="mb-1">
+                            <label class="mb-1 label">
                                 <strong>Email</strong>
                             </label>
                             <input id="emailField" type="email" class="form-control" placeholder="Enter your Email"
