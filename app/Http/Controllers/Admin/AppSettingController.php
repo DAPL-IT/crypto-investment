@@ -32,13 +32,16 @@ class AppSettingController extends Controller
             [
                 'app_name' => 'required|min:3|max:15',
                 'logo' => 'nullable|image|mimes:png,jpg,jpeg|min:1|max:129',
+                'background' => 'nullable|image|mimes:png,jpg,jpeg|min:1|max:5121',
             ],
             [
                 'app_name.required' => 'App Name cannot be empty',
                 'app_name.min' => 'App Name must have minimum of 3 letters',
                 'app_name.max' => 'App Name should not have more than 15 letters',
                 'logo.min' => 'Invalid logo image',
-                'logo.max' => 'Logo image cannot be more than 128Kb'
+                'logo.max' => 'Logo image cannot be more than 128Kb',
+                'logo.min' => 'Invalid background image',
+                'logo.max' => 'Background image cannot be more than 5Mb'
             ]
         );
 
@@ -68,6 +71,30 @@ class AppSettingController extends Controller
             $appSetting->icon_dir = $fileDir;
             $appSetting->icon_file_name = $newFileName;
         }
+
+        if ($request->hasFile('background')) {
+            if ($appSetting->background_image_file_name && file_exists($appSetting->background_image_full_path)) {
+                unlink($appSetting->background_image_full_path);
+            }
+            $reqFile = $request->file('background');
+            $fileName = 'background';
+            $fileExtension = strtolower($reqFile->getClientOriginalExtension());
+            $newFileName = $fileName . '.' . $fileExtension;
+            $fileDir = AppSetting::BACKGROUND_DIR;
+            try {
+                Image::make($reqFile)
+                    ->resize(1920, 1080)
+                    ->encode($fileExtension, 85)
+                    ->save($fileDir . $newFileName);
+            } catch (Exception $e) {
+                return back()->with($this->errorAlert('Failed to upload!'));
+            }
+
+            $appSetting->background_image_dir = $fileDir;
+            $appSetting->background_image_file_name = $newFileName;
+        }
+
+
         $appSetting->save();
         return back()->with($this->successAlert('Successfully updated!'));
     }

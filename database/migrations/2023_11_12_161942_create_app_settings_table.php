@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('app_name')->default('App Name');
             $table->string('icon_dir')->nullable();
             $table->string('icon_file_name')->nullable();
+            $table->string('background_image_dir')->nullable();
+            $table->string('background_image_file_name')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

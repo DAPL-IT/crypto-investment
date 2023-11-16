@@ -35,6 +35,12 @@
                                     64x64</small>
                             </div>
                             <div class="form-group">
+                                <label class="mb-2 pl-1"><small><b>Background Image</b></small></label>
+                                <input type="file" class="form-control" name="background">
+                                <small class="form-text pt-1">Maximum image size allowed: 5Mb,<br>Recommended dimensions:
+                                    1920x1080</small>
+                            </div>
+                            <div class="form-group">
                                 <button class="btn btn-xs btn-info" type="submit"><i
                                         class="fa-solid fa-floppy-disk"></i>&ensp;Save</button>
                                 <a href={{ route('app_settings.optimize') }} class="btn btn-xs btn-success text-white"><i
