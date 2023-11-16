@@ -16,15 +16,15 @@
                     <div class="row">
                         <div class="form-group col-12">
                             <label class="mb-1">
-                                <strong>Invitation Code</strong>
+                                <strong>Referred By</strong>
                             </label>
-                            <input type="text" class="form-control" placeholder="Enter invitation code (if any)"
-                                name="invitation_code" value="{{ old('invitation_code') }}">
+                            <input type="text" class="form-control" placeholder="Enter (if any)" name="invitation_code"
+                                value="{{ old('invitation_code') }}">
                         </div>
                         <div class="form-group col-12">
                             <label class="mb-1">
-                                <sup class="text-danger">*</sup>
                                 <strong>Username</strong>
+                                <sup class="text-danger">*</sup>
                             </label>
                             <input id="usernameField" required type="text" class="form-control"
                                 placeholder="Enter 6~30 letters or letters with numbers" name="username"
@@ -33,8 +33,8 @@
                         <small id="usernameErrorText" class="error-text"></small>
                         <div class="form-group col-12">
                             <label class="mb-1">
+                                <strong>Login Password</strong>
                                 <sup class="text-danger">*</sup>
-                                <strong>Login password</strong>
                             </label>
                             <input id="pwdField" required type="password" class="form-control password-field passwordInput"
                                 value="" placeholder="Minimum 6 digits with letters and numbers" name="password">
@@ -45,8 +45,8 @@
                         <small id="pwdErrorText" class="error-text"></small>
                         <div class="form-group col-12">
                             <label class="mb-1">
+                                <strong>Confirm Password</strong>
                                 <sup class="text-danger">*</sup>
-                                <strong>Confirm password</strong>
                             </label>
                             <input id="pwdConfirmField" required type="password"
                                 class="form-control password-field passwordInput" placeholder="Re-enter password"
@@ -59,11 +59,11 @@
 
                         <div class="form-group col-12">
                             <label class="mb-1">
+                                <strong>Telegram</strong>
                                 <sup class="text-danger">*</sup>
-                                <strong>Whatsapp</strong>
                             </label>
                             <input id="whatsappField" required type="text" class="form-control"
-                                placeholder="Enter your whatsapp number" name="whatsapp" value="{{ old('whatsapp') }}">
+                                placeholder="Enter your Telegram" name="whatsapp" value="{{ old('whatsapp') }}">
                         </div>
                         <small id="whatsappErrorText" class="error-text"></small>
                         <div class="form-group col-12">
