@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AppSettingController;
 use App\Http\Controllers\Admin\BannerSliderController;
 use App\Http\Controllers\Admin\NewsSliderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    //Deposit...
+    Route::get('/deposit', [PaymentController::class, 'index'])->name('deposit.index');
 });
 
 Route::middleware('auth')->group(function () {

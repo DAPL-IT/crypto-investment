@@ -68,16 +68,18 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-4 col-4  px-1">
-            <div class="card card-coin feature-card">
-                <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
-                    <h2 class="text-warning mb-0 font-w700">
-                        <i class="fa-solid fa-sack-dollar" style="font-size: 25pt !important"></i>
-                    </h2>
-                    <p class="mb-0 mt-2 font-w600" style="font-size: 8pt !important">
-                        Deposit
-                    </p>
+            <a href="{{ route('deposit.index') }}">
+                <div class="card card-coin feature-card">
+                    <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
+                        <h2 class="text-warning mb-0 font-w700">
+                            <i class="fa-solid fa-sack-dollar" style="font-size: 25pt !important"></i>
+                        </h2>
+                        <p class="mb-0 mt-2 font-w600" style="font-size: 8pt !important">
+                            Deposit
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-md-3 col-sm-4 col-4  px-1">
             <div class="card card-coin feature-card">
