@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Exception;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 
 class UserProfileController extends Controller
 {
@@ -164,7 +165,7 @@ class UserProfileController extends Controller
         $reqFile = $request->file('image');
         $fileName = pathinfo($reqFile->getClientOriginalName(), PATHINFO_FILENAME);
         $fileExtension = strtolower($reqFile->getClientOriginalExtension());
-        $newFileName = $this->generateFileName($fileName, $fileExtension);
+        $newFileName = Str::random(8) . '-' . $this->generateFileName($fileName, $fileExtension);
         $fileDir = UserImage::IMAGE_DIR;
 
         $userImage->image_dir =  $fileDir;
