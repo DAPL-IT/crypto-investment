@@ -11,6 +11,7 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+    //This Controller is laravel_default use UserProfileController Instead
     /**
      * Display the user's profile form.
      */

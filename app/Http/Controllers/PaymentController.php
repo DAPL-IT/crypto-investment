@@ -51,8 +51,8 @@ class PaymentController extends Controller
 
         try {
             Image::make($reqFile)
-                ->resize(900, 450)
-                ->encode($fileExtension, 75)
+                ->resize(375, 667)
+                ->encode($fileExtension, 85)
                 ->save($fileDir . $newFileName);
         } catch (Exception $e) {
             return back()->with($this->errorAlert('Failed to upload!'));

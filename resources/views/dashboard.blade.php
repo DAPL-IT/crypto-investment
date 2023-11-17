@@ -33,20 +33,16 @@ Dashboard
         <div class="card">
             <div class="card-body border-0 py-md-3 py-2 px-4">
                 <h6 class="mb-1 text-primary">Total Earnings</h6>
-                <span class="font-8">0</span>
+                <span class="font-8">{{ $user->user_transaction_brief->total_earning??'0' }}</span>
             </div>
             <div class="card-footer pt-0 pb-0 text-center">
-                @php
-                $userTransactionBrief = App\Models\UserTransactionBrief::where('user_id',
-                auth()->user()->id)->select('total_withdraw', 'total_deposit')->first();
-                @endphp
                 <div class="row">
                     <div class="col-4 py-2 border-right px-1">
-                        <h6 class="mb-1 text-primary">{{ $userTransactionBrief->total_withdraw }}</h6>
+                        <h6 class="mb-1 text-primary">{{ $user->user_transaction_brief->total_withdraw??'0' }}</h6>
                         <span class="font-8">Withdraws</span>
                     </div>
                     <div class="col-4 py-2 border-right px-1">
-                        <h6 class="mb-1 text-primary">{{ $userTransactionBrief->total_deposit }}</h6>
+                        <h6 class="mb-1 text-primary">{{ $user->user_transaction_brief->total_deposit??'0' }}</h6>
                         <span class="font-8">Deposits</span>
                     </div>
                     <div class="col-4 py-2">

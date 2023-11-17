@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\NewsSliderController;
 use App\Http\Controllers\Admin\DepositController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,21 +17,19 @@ Route::get('clear', [AppSettingController::class, 'optimize'])->name('clear');
 require __DIR__ . '/auth.php';
 
 Route::middleware('auth')->group(function () {
+    Route::prefix('deposit')
+        ->controller(PaymentController::class)
+        ->name('deposit.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('/store', 'store')->name('store');
+        });
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    //Deposit...
-    Route::get('/deposit', [PaymentController::class, 'index'])->name('deposit.index');
-    Route::post('/deposit/store', [PaymentController::class, 'store'])->name('deposit.store');
-});
-
-Route::middleware('auth')->group(function () {
+    Route::prefix('dashboard')
+        ->controller(DashBoardController::class)
+        ->group(function () {
+            Route::get('/', 'index')->name('dashboard');
+        });
     Route::prefix('banner-slider')
         ->controller(BannerSliderController::class)
         ->name('banner_slider.')

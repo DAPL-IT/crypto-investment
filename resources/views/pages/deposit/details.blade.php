@@ -48,7 +48,7 @@
                         <p><strong>Transaction ID:</strong> {{ $deposit->transaction_id }}</p>
                     </div>
                     <div class="col-md-4">
-                        <img class="img-fluid col-sm-11 col-xs-10" src="{{ asset($deposit->thumbFullPath) }}">
+                        <img class="img-fluid col-sm-11 col-xs-10" src="{{ asset($deposit->screenshotFullPath) }}">
                     </div>
                     <div class="col-12 mt-3">
                         @if ($deposit->deposit_status == 2)
