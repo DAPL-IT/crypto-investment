@@ -8,7 +8,7 @@
     <div class="row px-1 mb-3">
         <div class="col-12 p-md-0">
             <div class="welcome-text px-md-4 px-1">
-                <h4>Manage Banners</h4>
+                <h6>Manage Banners</h6>
                 <span style="font-size: 8pt;">You can upload and delete banners</span>
             </div>
         </div>

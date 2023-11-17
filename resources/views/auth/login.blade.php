@@ -8,19 +8,19 @@
         <div class="col-xl-12">
             <div class="auth-form">
                 <div class="text-center mb-3">
-                    <img src="" alt="">
+                    <img src="{{ asset('images/site/icon/icon.png') }}" alt="logo">
                 </div>
-                <h4 class="text-center mb-4">Login to your account</h4>
+                <h4 class="text-center mb-4 heading">Login to your account</h4>
                 <form method="POST" action="{{ route('login-store') }}">
                     @csrf
                     <div class="row">
                         <div class="form-group col-12">
-                            <label class="mb-1"><strong>Username</strong></label>
+                            <label class="mb-1 label"><strong>Username</strong></label>
                             <input type="text" class="form-control" name="username" value="{{ old('username') }}"
                                 autocomplete="off">
                         </div>
                         <div class="form-group col-12">
-                            <label class="mb-1">
+                            <label class="mb-1 label">
                                 <strong>Password</strong>
                             </label>
                             <input id="pwdField" required type="password" class="form-control password-field passwordInput"
@@ -34,7 +34,7 @@
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox ml-1">
                                         <input type="checkbox" class="custom-control-input" id="basic_checkbox_1">
-                                        <label class="pl-1 custom-control-label" for="basic_checkbox_1">
+                                        <label class="pl-2 custom-control-label" for="basic_checkbox_1">
                                             <small>Remember Me</small>
                                         </label>
                                     </div>

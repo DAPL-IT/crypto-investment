@@ -19,16 +19,25 @@
             flex-direction: column;
             justify-content: center;
             min-height: 100vh;
-            background: #f3f2f6 !important
+            background-image: linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.42)), url('/images/site/background/background.jpg') !important;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
         ::placeholder {
-            color: rgba(128, 128, 128, 0.5) !important;
+            color: rgba(208, 207, 207, 0.5) !important;
             font-size: 9pt !important;
         }
 
         .password-field {
             padding-right: 40px;
+        }
+
+        .form-control {
+            background: transparent !important;
+            color: rgb(215, 215, 215) !important;
         }
 
         .password-eye-icon {
@@ -43,16 +52,25 @@
             padding: 0px 25px 15px 25px !important;
             display: none
         }
+
+        .heading {
+            color: white;
+        }
+
+        .label {
+            padding-left: 0px !important;
+            color: rgb(215, 215, 215) !important;
+        }
     </style>
     @yield('extra_css')
 </head>
 
 <body>
-    <div>
+    <div style="z-index: 999 !important">
         <div class="container ">
-            <div class="row justify-content-center  align-items-center">
-                <div class="col-md-6 col-12 py-3">
-                    <div class="authincation-content">
+            <div class="row justify-content-center  align-items-center" style="background-color: transparent!">
+                <div class="col-lg-6  col-md-8 col-12 py-3">
+                    <div class="authincation-content" style="background-color: rgba(15, 15, 15, 0.5)">
                         @yield('main_content')
                     </div>
                 </div>

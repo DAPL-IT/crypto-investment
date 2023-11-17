@@ -3,7 +3,10 @@
 use App\Http\Controllers\Admin\AppSettingController;
 use App\Http\Controllers\Admin\BannerSliderController;
 use App\Http\Controllers\Admin\NewsSliderController;
+use App\Http\Controllers\Admin\DepositController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,17 +17,19 @@ Route::get('clear', [AppSettingController::class, 'optimize'])->name('clear');
 require __DIR__ . '/auth.php';
 
 Route::middleware('auth')->group(function () {
+    Route::prefix('deposit')
+        ->controller(PaymentController::class)
+        ->name('deposit.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('/store', 'store')->name('store');
+        });
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-Route::middleware('auth')->group(function () {
+    Route::prefix('dashboard')
+        ->controller(DashBoardController::class)
+        ->group(function () {
+            Route::get('/', 'index')->name('dashboard');
+        });
     Route::prefix('banner-slider')
         ->controller(BannerSliderController::class)
         ->name('banner_slider.')
@@ -60,5 +65,14 @@ Route::middleware('auth')->group(function () {
         ->name('user_profile.')
         ->group(function () {
             Route::get('/', 'index')->name('index');
+        });
+
+        Route::prefix('admin/deposits')
+        ->controller(DepositController::class)
+        ->group(function () {
+            Route::get('/', 'index')->name('deposit.requests');
+            Route::get('/details/{id}', 'details')->name('deposit.details');
+            Route::get('/approve/{id}', 'approve')->name('deposit.approve');
+            Route::get('/reject/{id}', 'reject')->name('deposit.reject');
         });
 });
