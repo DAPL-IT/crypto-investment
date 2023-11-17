@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AppSettingController;
 use App\Http\Controllers\Admin\BannerSliderController;
 use App\Http\Controllers\Admin\NewsSliderController;
+use App\Http\Controllers\Admin\DepositController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserProfileController;
@@ -26,6 +27,7 @@ Route::middleware('auth')->group(function () {
 
     //Deposit...
     Route::get('/deposit', [PaymentController::class, 'index'])->name('deposit.index');
+    Route::post('/deposit/store', [PaymentController::class, 'store'])->name('deposit.store');
 });
 
 Route::middleware('auth')->group(function () {
@@ -64,5 +66,14 @@ Route::middleware('auth')->group(function () {
         ->name('user_profile.')
         ->group(function () {
             Route::get('/', 'index')->name('index');
+        });
+
+        Route::prefix('admin/deposits')
+        ->controller(DepositController::class)
+        ->group(function () {
+            Route::get('/', 'index')->name('deposit.requests');
+            Route::get('/details/{id}', 'details')->name('deposit.details');
+            Route::get('/approve/{id}', 'approve')->name('deposit.approve');
+            Route::get('/reject/{id}', 'reject')->name('deposit.reject');
         });
 });

@@ -18,6 +18,8 @@
             <div class="card">
                 <div class="card-body">
                     <img class="img-fluid img-thumbnail" src="{{ asset('images/assets/binance_qr.png') }}">
+                    <p id="walletAddress">TR5nwgbzRi62yAEU4tK6rgFty3FgfNbN7k</p>
+                    <button onclick="copyText()" class="btn btn-primary">Copy</button>
                 </div>
             </div>
         </div>
@@ -25,7 +27,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="basic-form custom_file_input mb-4">
-                        <form method="POST" action="{{ route('banner_slider.create') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('deposit.store') }}" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
                             <div class="form-group">
@@ -56,25 +58,17 @@
         </div>
     </div>
 @endsection
-
 @section('extra_script')
-    <script>
-        $('.delete').on('click', (e) => {
-            e.preventDefault()
-            const targetItem = e.currentTarget
-            console.log(targetItem)
-            Swal.fire({
-                title: "Warning",
-                text: "Are you sure you want to delete this?",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#d33",
-                confirmButtonText: "DELETE"
-            }).then((result) => {
-                if (result.value) {
-                    targetItem.closest('form').submit()
-                }
-            });
-        })
-    </script>
+<script>
+    function copyText() {
+        const walletAddress = document.getElementById('walletAddress');
+        const textArea = document.createElement('textarea');
+        textArea.value = walletAddress.textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('Copied to clipboard');
+    }
+</script>
 @endsection

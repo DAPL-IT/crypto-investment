@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('screenshot_dir');
             $table->text('screenshot_file_name');
             $table->unsignedMediumInteger('payment_gateway_id');
-            $table->unsignedBigInteger('transaction_id');
+            $table->string('transaction_id');
             $table->unsignedBigInteger('user_id');
 
             $table->foreign('payment_gateway_id')
