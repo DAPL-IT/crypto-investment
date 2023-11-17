@@ -211,19 +211,18 @@ Dashboard
             <div class="carousel-inner border rounded">
                 <div class="carousel-item active " style="height: 120px;">
                     <img class="d-block w-100  h-100 img-fluid"
-                        src="https://t4.ftcdn.net/jpg/03/02/74/89/360_F_302748918_Vs76DTDodjhhkYuCEFahu0LcoDZkBuaW.jpg"
+                        src="{{ asset($banners[0]->bannerFullPath) }}"
                         alt="First slide">
                 </div>
+                @foreach ($banners as $banner)
+                @if (!$loop->first)
                 <div class="carousel-item  " style="height: 120px;">
                     <img class="d-block w-100 h-100 img-fluid"
-                        src="https://st2.depositphotos.com/1265075/11464/i/450/depositphotos_114649452-stock-photo-demo-sign-on-red-cubes.jpg"
-                        alt="Second slide">
+                        src="{{ asset($banner->bannerFullPath) }}"
+                        alt="{{ $banner->id . '.slide' }}">
                 </div>
-                <div class="carousel-item  " style="height: 120px;">
-                    <img class="d-block w-100 h-100 img-fluid"
-                        src="https://st2.depositphotos.com/1186248/5903/i/950/depositphotos_59038425-stock-photo-demo.jpg"
-                        alt="Third slide">
-                </div>
+                @endif
+                @endforeach
             </div>
         </div>
     </div>
@@ -239,7 +238,7 @@ Dashboard
                     </div>
                     <div class="col-md-11 col-10 ">
                         <marquee direction="left" scrollamount="5">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur, deleniti?
+                            {{ $allNews }}
                         </marquee>
                     </div>
                 </div>
