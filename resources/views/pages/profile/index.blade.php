@@ -3,7 +3,6 @@
     Profile
 @endsection
 
-
 @section('main_content')
     <div class="row px-1 mb-3">
         <div class="col-12 p-md-0">
@@ -69,15 +68,65 @@
 
                                 <div id="about-me" class="tab-pane fade active show">
                                     <div class="pt-3 profile-personal-info">
-                                        <div class="row mb-2">
+                                        <div class="row mb-0">
                                             <div class="col-sm-3 col-5">
-                                                <p class="f-w-500"><small>Name</small> <small class="pull-right">:</small>
+                                                <p class="f-w-500 pb-0 mb-0"><small>Telegram</small> <small
+                                                        class="pull-right">:</small>
                                                 </p>
                                             </div>
-                                            <div class="col-sm-9 col-7"><small>Mitchell C.Shay</small>
+                                            <div class="col-sm-9 col-7"><small>{{ $user->whatsapp }}</small>
                                             </div>
                                         </div>
-
+                                        <div class="row mb-0">
+                                            <div class="col-sm-3 col-5">
+                                                <p class="f-w-500 pb-0 mb-0"><small>Email</small> <small
+                                                        class="pull-right">:</small>
+                                                </p>
+                                            </div>
+                                            <div class="col-sm-9 col-7">
+                                                @if ($user->email)
+                                                    <small>{{ $user->email }}</small>
+                                                @else
+                                                    <small>N/A</small>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="row mb-0">
+                                            <div class="col-sm-3 col-5">
+                                                <p class="f-w-500 pb-0 mb-0"><small>Phone</small> <small
+                                                        class="pull-right">:</small>
+                                                </p>
+                                            </div>
+                                            <div class="col-sm-9 col-7">
+                                                @if ($user->phone)
+                                                    <small>{{ $user->phone }}</small>
+                                                @else
+                                                    <small>N/A</small>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        @if ($inviter)
+                                            <div class="row mb-0">
+                                                <div class="col-sm-3 col-5">
+                                                    <p class="f-w-500 pb-0 mb-0"><small>Referred By</small> <small
+                                                            class="pull-right">:</small>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <small class="text-primary">{{ $inviter->username }}</small>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        <div class="row mb-0">
+                                            <div class="col-sm-3 col-5">
+                                                <p class="f-w-500 pb-0 mb-0"><small>Joined</small> <small
+                                                        class="pull-right">:</small>
+                                                </p>
+                                            </div>
+                                            <div class="col-sm-9 col-7">
+                                                <small>{{ $user->created_at->format('D, d M Y') }}</small>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div id="profile-settings" class="tab-pane fade">

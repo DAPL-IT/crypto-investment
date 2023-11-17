@@ -13,7 +13,15 @@ class UserProfileController extends Controller
      */
     public function index()
     {
-        $user = User::with('user_image', 'user_invitation_code', 'user_transaction_brief', 'user_profile')->where('id', Auth::user()->id)->first();
+        $user = User::with(
+            'user_image',
+            'user_invitation_code',
+            'user_transaction_brief',
+            'user_profile'
+        )
+            ->where('id', Auth::user()->id)
+            ->first();
+
         $inviter = null;
         if ($user->inviter_id) {
             $inviter = User::where('id', $user->inviter_id)->first();
@@ -48,9 +56,9 @@ class UserProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
-        //
+        return view('pages.profile.edit_general');
     }
 
     /**
