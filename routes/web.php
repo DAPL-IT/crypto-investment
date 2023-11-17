@@ -67,12 +67,14 @@ Route::middleware('auth')->group(function () {
             Route::get('/', 'index')->name('index');
         });
 
-        Route::prefix('admin/deposits')
+    Route::prefix('admin/deposits')
         ->controller(DepositController::class)
+        ->name('deposit.')
+        ->middleware(['admin'])
         ->group(function () {
-            Route::get('/', 'index')->name('deposit.requests');
-            Route::get('/details/{id}', 'details')->name('deposit.details');
-            Route::get('/approve/{id}', 'approve')->name('deposit.approve');
-            Route::get('/reject/{id}', 'reject')->name('deposit.reject');
+            Route::get('/', 'index')->name('requests');
+            Route::get('/details/{id}', 'details')->name('details');
+            Route::get('/approve/{id}', 'approve')->name('approve');
+            Route::get('/reject/{id}', 'reject')->name('reject');
         });
 });
