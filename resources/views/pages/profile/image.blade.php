@@ -32,7 +32,7 @@
 
                             <div class="form-group">
                                 <label class="mb-2 pl-1"><small><b>Image</b></small></label>
-                                <input type="file" class="form-control" name="image">
+                                <input type="file" class="form-control" name="image" accept=".jpg, .jpeg, .png">
                                 <small class="form-text pt-1">Maximum image size allowed: 3Mb,<br>Recommended dimensions:
                                     200x200</small>
                             </div>
