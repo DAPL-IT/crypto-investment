@@ -11,7 +11,7 @@ class Deposit extends Model
 {
     use HasFactory, SoftDeletes;
 
-    const SCREENSHOT_DIR = 'images/deposits/screenshots';
+    const SCREENSHOT_DIR = 'images/deposits/screenshots/';
 
     protected $fillable = [
         'amount',
@@ -24,16 +24,15 @@ class Deposit extends Model
     ];
 
     protected $hidden = [
-        'screenshot_dir',
-        'screenshot_file_name'
+        'screenshot_dir'
     ];
 
     protected $appends = ['screenshot_full_path'];
 
-    protected function thumbFullPath(): Attribute
+    protected function screenshotFullPath(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->attributes['screenshot_dir'] . '/' . $this->attributes['screenshot_file_name'],
+            get: fn () => $this->attributes['screenshot_dir'] . $this->attributes['screenshot_file_name'],
         );
     }
 

@@ -10,6 +10,13 @@
             </li>
             @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
                 <li>
+                    <a class="" href="{{ route('deposit.requests') }}">
+                        <i class="flaticon-144-layout"></i>
+                        <span class="nav-text">Deposit Requests</span>
+                    </a>
+                </li>
+
+                <li>
                     <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                         <i class="flaticon-381-settings-2"></i>
                         <span class="nav-text">Settings</span>
