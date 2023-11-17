@@ -65,6 +65,13 @@ Route::middleware('auth')->group(function () {
         ->name('user_profile.')
         ->group(function () {
             Route::get('/', 'index')->name('index');
+            Route::get('/general', 'generalEdit')->name('general.edit');
+            Route::put('/general', 'generalUpdate')->name('general.update');
+            Route::get('/password', 'passwordEdit')->name('password.edit');
+            Route::put('/password', 'passwordUpdate')->name('password.update');
+            Route::get('/image', 'imageEdit')->name('image.edit');
+            Route::post('/image', 'imageUpdate')->name('image.update');
+            Route::get('/image-remove', 'imageDelete')->name('image.delete');
         });
 
     Route::prefix('admin/deposits')

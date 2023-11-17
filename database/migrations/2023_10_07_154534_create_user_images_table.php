@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('thumb_size_dir')->nullable();
-            $table->string('icon_size_dir')->nullable();
+            $table->string('image_dir')->nullable();
             $table->text('file_name');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')

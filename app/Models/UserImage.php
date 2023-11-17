@@ -10,34 +10,24 @@ class UserImage extends Model
 {
     use HasFactory;
 
-    const THUMB_DIR = 'images/users/thumbnails/';
-    const ICON_DIR = 'images/users/icons/';
+    const IMAGE_DIR = 'images/users/image/';
 
     protected $fillable = [
-        'thumb_size_dir',
-        'icon_size_dir',
+        'image_dir',
         'file_name',
         'user_id'
     ];
 
     protected $hidden = [
-        'icon_size_dir',
-        'thumb_size_dir'
+        'image_dir'
     ];
 
-    protected $appends = ['thumb_full_path', 'icon_full_path'];
+    protected $appends = ['image_full_path'];
 
-    protected function thumbFullPath(): Attribute
+    protected function imageFullPath(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->attributes['thumb_size_dir'] . $this->attributes['file_name'],
-        );
-    }
-
-    protected function iconFullPath(): Attribute
-    {
-        return Attribute::make(
-            get: fn () => $this->attributes['icon_size_dir'] . $this->attributes['file_name'],
+            get: fn () => $this->attributes['image_dir'] . $this->attributes['file_name'],
         );
     }
 

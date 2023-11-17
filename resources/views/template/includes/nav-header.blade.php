@@ -8,7 +8,7 @@
                     <li class="nav-item dropdown header-profile">
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown">
                             @if (Auth::user()->user_image)
-                                <img src="{{ asset(Auth::user()->user_image->icon_full_path) }}"
+                                <img src="{{ asset(Auth::user()->user_image->image_full_path) }}"
                                     style="width: 40px !important; height: 40px !important;"
                                     alt="{{ Auth::user()->username }}" />
                             @else

@@ -32,13 +32,19 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'username' => ['required', 'string', 'min:6', 'max:50', 'unique:users,username'],
-            'email' => ['nullable', 'string', 'email', 'max:250'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()->min(6)],
-            'whatsapp' => ['nullable', 'string', 'max:50'],
-            'invitation_code' => ['nullable', 'string', 'max:250'],
-        ]);
+        $request->validate(
+            [
+                'username' => ['required', 'string', 'min:6', 'max:50', 'unique:users,username'],
+                'email' => ['nullable', 'string', 'email', 'max:250'],
+                'password' => ['required', 'confirmed', Rules\Password::defaults()->min(6)],
+                'whatsapp' => ['required', 'string', 'max:50'],
+                'invitation_code' => ['nullable', 'string', 'max:250'],
+            ],
+            [
+                'whatsapp.required' => 'Telegram is required',
+                'whatsapp.max' => 'Invalid Telegram!'
+            ]
+        );
 
         $user = new User();
 

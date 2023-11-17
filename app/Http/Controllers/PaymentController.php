@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Traits\AlertTrait;
 use App\Traits\HelperTrait;
 use App\Models\Deposit;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
@@ -14,12 +15,12 @@ class PaymentController extends Controller
 {
     use AlertTrait, HelperTrait;
 
-    public function index (): View
+    public function index(): View
     {
         return view('deposit.index');
     }
 
-    public function store (Request $request)
+    public function store(Request $request)
     {
         $request->validate(
             [
