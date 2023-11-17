@@ -19,7 +19,7 @@
                     <div class="profile-info">
                         <div>
                             @if ($user->user_image)
-                                <img style="width: 80px" src="{{ asset($user->user_image->icon_full_path) }}"
+                                <img style="width: 80px" src="{{ asset($user->user_image->image_full_path) }}"
                                     class="img-fluid rounded" alt="{{ $user->username }}" />
                             @else
                                 <img style="width: 80px"
@@ -37,12 +37,21 @@
                                 <a href="#" class="btn btn-xs btn-danger light sharp" data-toggle="dropdown"
                                     aria-expanded="true"><i class="fa-solid fa-ellipsis"></i></a>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li class="dropdown-item">Edit General</li>
+                                    <li class="dropdown-item"><a class="d-block"
+                                            href="{{ route('user_profile.general.edit') }}">Edit General</a>
+                                    </li>
                                     @if ($user->user_profile)
                                         <li class="dropdown-item">Edit Details</li>
                                     @endif
-                                    <li class="dropdown-item">Change Password</li>
-                                    <li class="dropdown-item">Profile Image</li>
+                                    <li class="dropdown-item">
+                                        <a class="d-block" href="{{ route('user_profile.password.edit') }}">
+                                            Change Password
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-item"><a class="d-block"
+                                            href="{{ route('user_profile.image.edit') }}">Profile Image</a>
+                                    </li>
+
                                 </ul>
                             </div>
                         </div>
