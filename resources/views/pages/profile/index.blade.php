@@ -144,13 +144,164 @@
                                 <div id="profile-settings" class="tab-pane fade">
                                     <div class="pt-3 profile-personal-info">
                                         @if ($user->user_profile)
-                                            <div class="row mb-2">
-                                                <div class="col-sm-3 col-5">
-                                                    <p class="f-w-500"><small>Name</small> <small
+                                            <div class="row">
+                                                <div class="col-sm-3 col-5 mb-0">
+                                                    <p class="f-w-500 pb-0 mb-0"><small>Name</small> <small
                                                             class="pull-right">:</small>
                                                     </p>
                                                 </div>
-                                                <div class="col-sm-9 col-7"><small>Mitchell C.Shay</small>
+                                                <div class="col-sm-9 col-7">
+                                                    <small>{{ $user->user_profile->full_name }}</small>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-3 col-5 mb-0">
+                                                    <p class="f-w-500 pb-0 mb-0"><small>Date of birth</small> <small
+                                                            class="pull-right">:</small>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    @if ($user->user_profile->date_of_birth)
+                                                        <small>{{ date('d/m/Y', strtotime($user->user_profile->date_of_birth)) }}</small>
+                                                    @else
+                                                        <small>N/A</small>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-3 col-5 mb-0">
+                                                    <p class="f-w-500 pb-0 mb-0"><small>Nationality</small> <small
+                                                            class="pull-right">:</small>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    @if ($user->user_profile->nationality)
+                                                        <small>{{ $user->user_profile->nationality }}</small>
+                                                    @else
+                                                        <small>N/A</small>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-3 col-5 mb-0">
+                                                    <p class="f-w-500 pb-0 mb-0"><small>NID</small> <small
+                                                            class="pull-right">:</small>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    @if ($user->user_profile->nid)
+                                                        <small>{{ $user->user_profile->nid }}</small>
+                                                    @else
+                                                        <small>N/A</small>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-3 col-5 mb-0">
+                                                    <p class="f-w-500 pb-0 mb-0"><small>Religion</small> <small
+                                                            class="pull-right">:</small>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    @if ($user->user_profile->religion)
+                                                        <small>{{ $user->user_profile->religion }}</small>
+                                                    @else
+                                                        <small>N/A</small>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-3 col-5 mb-0">
+                                                    <p class="f-w-500 pb-0 mb-0"><small>Country</small> <small
+                                                            class="pull-right">:</small>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    @if ($user->user_profile->country)
+                                                        <small>{{ $user->user_profile->country }}</small>
+                                                    @else
+                                                        <small>N/A</small>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-3 col-5 mb-0">
+                                                    <p class="f-w-500 pb-0 mb-0"><small>City</small> <small
+                                                            class="pull-right">:</small>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    @if ($user->user_profile->city)
+                                                        <small>{{ $user->user_profile->city }}</small>
+                                                    @else
+                                                        <small>N/A</small>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-3 col-5 mb-0">
+                                                    <p class="f-w-500 pb-0 mb-0"><small>Post Code</small> <small
+                                                            class="pull-right">:</small>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    @if ($user->user_profile->post_code)
+                                                        <small>{{ $user->user_profile->post_code }}</small>
+                                                    @else
+                                                        <small>N/A</small>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-3 col-5 mb-0">
+                                                    <p class="f-w-500 pb-0 mb-0"><small>Police Station</small> <small
+                                                            class="pull-right">:</small>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    @if ($user->user_profile->police_station)
+                                                        <small>{{ $user->user_profile->police_station }}</small>
+                                                    @else
+                                                        <small>N/A</small>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-3 col-5 mb-0">
+                                                    <p class="f-w-500 pb-0 mb-0"><small>Present Address</small> <small
+                                                            class="pull-right">:</small>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    @if ($user->user_profile->present_address)
+                                                        <small>{{ $user->user_profile->present_address }}</small>
+                                                    @else
+                                                        <small>N/A</small>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-3 col-5 mb-0">
+                                                    <p class="f-w-500 pb-0 mb-0"><small>Permanent Address</small> <small
+                                                            class="pull-right">:</small>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    @if ($user->user_profile->permanent_address)
+                                                        <small>{{ $user->user_profile->permanent_address }}</small>
+                                                    @else
+                                                        <small>N/A</small>
+                                                    @endif
                                                 </div>
                                             </div>
                                         @else

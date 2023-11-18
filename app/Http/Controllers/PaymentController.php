@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Traits\AlertTrait;
 use App\Traits\HelperTrait;
 use App\Models\Deposit;
+use App\Models\PaymentGateway;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -17,7 +18,8 @@ class PaymentController extends Controller
 
     public function index(): View
     {
-        return view('deposit.index');
+        $paymentGateway = PaymentGateway::orderBy('id', 'asc')->first();
+        return view('deposit.index', compact(['paymentGateway']));
     }
 
     public function store(Request $request)
@@ -36,6 +38,8 @@ class PaymentController extends Controller
             ]
         );
 
+        $paymentGateway = PaymentGateway::orderBy('id', 'asc')->first();
+
         $reqFile = $request->file('screenshot');
         $fileName = pathinfo($reqFile->getClientOriginalName(), PATHINFO_FILENAME);
         $fileExtension = strtolower($reqFile->getClientOriginalExtension());
@@ -48,7 +52,7 @@ class PaymentController extends Controller
         $deposit->amount = $request->amount;
         $deposit->user_id = Auth::user()->id;
         $deposit->transaction_id = $request->transaction_id;
-        $deposit->payment_gateway_id = 1;
+        $deposit->payment_gateway_id = $paymentGateway->id;
 
         try {
             Image::make($reqFile)

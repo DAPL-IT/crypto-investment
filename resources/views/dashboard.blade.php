@@ -208,13 +208,13 @@
     @if (count($banners))
         <div class="row px-1 mt-md-4 mt-3 mb-4">
             <div class="bootstrap-carousel col-12">
-                <div class="carousel slide pointer-event" data-ride="carousel" data-interval="2000">
+                <div class="carousel slide pointer-event" data-ride="carousel" data-interval="2500">
                     <div class="carousel-inner border rounded">
                         @foreach ($banners as $key => $banner)
                             <div class="carousel-item @if ($loop->first) {{ 'active' }} @endif"
                                 style="height: 120px;">
                                 <img class="d-block w-100  h-100 img-fluid" src="{{ asset($banner->bannerFullPath) }}"
-                                    alt="First slide">
+                                    alt="banner_{{ $key }}">
                             </div>
                         @endforeach
                     </div>
@@ -230,7 +230,7 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-1 col-2 ">
-                                <img src="{{ asset('images/assets/megaphone.png') }}" alt="" style="width: 35px">
+                                <img src="{{ asset('images/assets/mic.png') }}" alt="image" style="width: 35px">
                             </div>
                             <div class="col-md-11 col-10 ">
                                 <marquee direction="left" scrollamount="5">

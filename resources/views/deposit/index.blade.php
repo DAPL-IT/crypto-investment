@@ -17,8 +17,11 @@
         <div class="col-12 d-flex justify-content-center">
             <div class="card">
                 <div class="card-body">
-                    <img class="img-fluid img-thumbnail" src="{{ asset('images/assets/binance_qr.png') }}">
-                    <p id="walletAddress" class="pt-2 mb-2" style="font-size: 8pt;">TR5nwgbzRi62yAEU4tK6rgFty3FgfNbN7k</p>
+                    <p class="mt-0 mb-2">{{ $paymentGateway->name }}</p>
+                    <img class="img-fluid img-thumbnail" src="{{ asset($paymentGateway->qrcode_full_path) }}">
+                    <p id="walletAddress" class="pt-2 mb-2" style="font-size: 8pt;">
+                        {{ $paymentGateway->code }}
+                    </p>
                     <button onclick="copyText()" class="btn btn-xs btn-primary mb-0"><i
                             class="fa-regular fa-clipboard"></i>&ensp;Copy</button>
                 </div>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('qrcode_dir')->nullable();
             $table->string('qrcode_file_name')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index(['id', 'name_slug']);
         });

@@ -14,13 +14,13 @@ class DepositController extends Controller
 {
     use AlertTrait;
 
-    public function index (): View
+    public function index(): View
     {
         $allRequests = Deposit::orderBy('id', 'desc')->with('user')->paginate(10);
         return view('pages.deposit.index', compact(['allRequests']));
     }
 
-    public function details ($id)
+    public function details($id)
     {
         $deposit = Deposit::where('id', $id)->with('user')->first();
         return view('pages.deposit.details', compact(['deposit']));
@@ -29,39 +29,36 @@ class DepositController extends Controller
     public function approve($id)
     {
         return DB::transaction(function () use ($id) {
-                $deposit = Deposit::where('id', $id)->with('user')->first();
+            $deposit = Deposit::where('id', $id)->with('user')->first();
 
-                if ($deposit != null) {
-                    if($deposit->deposit_status == 1){
-                        return back()->with($this->errorAlert('Already Approved!'));
-                    }
-                    else{
-                        $transaction_brief = UserTransactionBrief::where('user_id', $deposit->user->id)->first();
-                        if ($transaction_brief != null) {
-                                $transaction_brief->total_deposit += $deposit->amount;
-                                $transaction_brief->save();
+            if ($deposit != null) {
+                if ($deposit->deposit_status == 1) {
+                    return back()->with($this->errorAlert('Already Approved!'));
+                } else {
+                    $transaction_brief = UserTransactionBrief::where('user_id', $deposit->user->id)->first();
+                    if ($transaction_brief != null) {
+                        $transaction_brief->total_deposit += $deposit->amount;
+                        $transaction_brief->save();
 
-                                $deposit->deposit_status = 1;
-                                $deposit->save();
+                        $deposit->deposit_status = 1;
+                        $deposit->save();
 
-                                return back()->with($this->successAlert('Approved Successfully!'));
-                        }
-                        else {
-                                $transaction_brief = new UserTransactionBrief();
-                                $transaction_brief->user_id = $deposit->user->id;
-                                $transaction_brief->total_deposit = $deposit->amount;
-                                $transaction_brief->save();
+                        return back()->with($this->successAlert('Approved Successfully!'));
+                    } else {
+                        $transaction_brief = new UserTransactionBrief();
+                        $transaction_brief->user_id = $deposit->user->id;
+                        $transaction_brief->total_deposit = $deposit->amount;
+                        $transaction_brief->save();
 
-                                $deposit->deposit_status = 1;
-                                $deposit->save();
+                        $deposit->deposit_status = 1;
+                        $deposit->save();
 
-                                return back()->with($this->successAlert('Approved Successfully!'));
-                        }
+                        return back()->with($this->successAlert('Approved Successfully!'));
                     }
                 }
-                else {
-                    return back()->with($this->errorAlert('Data not found!'));
-                }
+            } else {
+                return back()->with($this->errorAlert('Data not found!'));
+            }
         });
     }
 
@@ -70,22 +67,18 @@ class DepositController extends Controller
         $deposit = Deposit::where('id', $id)->with('user')->first();
 
         if ($deposit != null) {
-            if($deposit->deposit_status == 0){
+            if ($deposit->deposit_status == 0) {
                 return back()->with($this->errorAlert('Already Rejected!'));
-            }
-            elseif($deposit->deposit_status == 1){
+            } elseif ($deposit->deposit_status == 1) {
                 return back()->with($this->errorAlert('Already Approved!'));
-            }
-            else{
+            } else {
                 $deposit->deposit_status = 0;
                 $deposit->save();
 
                 return back()->with($this->successAlert('Rejected Successfully!'));
             }
-        }
-        else {
+        } else {
             return back()->with($this->errorAlert('Data not found!'));
         }
     }
-
 }

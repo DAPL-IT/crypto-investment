@@ -252,7 +252,10 @@ class UserProfileController extends Controller
             'permanent_address',
         ]));
 
-        $userProfile->date_of_birth = date('Y-m-d', strtotime($request->date_of_birth));
+        if ($request->date_of_birth) {
+            $userProfile->date_of_birth = date('Y-m-d', strtotime($request->date_of_birth));
+        }
+
         $userProfile->save();
 
         return redirect()

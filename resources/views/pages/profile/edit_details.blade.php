@@ -38,7 +38,7 @@
                                 <div class="form-group col-md-4">
                                     <label class="mb-2 pl-1"><small><b>Date Of Birth</b></small></label>
                                     <input type="date" class="form-control" name="date_of_birth"
-                                        value="{{ $userProfile->date_of_birth }}">
+                                        value="{{ $userProfile->date_of_birth }}" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label class="mb-2 pl-1"><small><b>Nationality</b></small></label>
