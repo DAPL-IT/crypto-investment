@@ -4,6 +4,7 @@
 <title>
     @yield('page_title')
 </title>
+<link rel="shortcut icon" href="{{ asset('images/site/icon/icon.png') }}" type="image/x-icon">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />

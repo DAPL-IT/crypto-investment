@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserImage;
+use App\Models\UserProfile;
 use App\Traits\AlertTrait;
 use App\Traits\HelperTrait;
 use Illuminate\Http\Request;
@@ -203,6 +204,62 @@ class UserProfileController extends Controller
             ->route('user_profile.index')
             ->with($this->successAlert('Successfully deleted!'));
     }
+
+    public function detailsEdit()
+    {
+        $userProfile = UserProfile::where('user_id', Auth::user()->id)->first();
+
+        if (!$userProfile) {
+            $userProfile = new UserProfile();
+            $userProfile->user_id = Auth::user()->id;
+            $userProfile->save();
+        }
+
+        return view('pages.profile.edit_details', compact(['userProfile']));
+    }
+
+
+    public function detailsUpdate(Request $request)
+    {
+        $request->validate(
+            [
+                'full_name' => 'required|string|min:3|max:100',
+                'date_of_birth' => 'nullable|date',
+                'nationality' => 'nullable|string|max:50',
+                'nid' => 'nullable|string|max:100',
+                'religion' => 'nullable|string|max:50',
+                'country' => 'nullable|string|max:50',
+                'city' => 'nullable|string|max:50',
+                'post_code' => 'nullable|string|max:50',
+                'police_station' => 'nullable|string|max:50',
+                'present_address' => 'nullable|string|max:250',
+                'permanent_address' => 'nullable|string|max:250',
+            ],
+        );
+
+        $userProfile = UserProfile::where('user_id', Auth::user()->id)->firstOrFail();
+
+        $userProfile->fill($request->only([
+            'full_name',
+            'nationality',
+            'nid',
+            'religion',
+            'country',
+            'city',
+            'post_code',
+            'police_station',
+            'present_address',
+            'permanent_address',
+        ]));
+
+        $userProfile->date_of_birth = date('Y-m-d', strtotime($request->date_of_birth));
+        $userProfile->save();
+
+        return redirect()
+            ->route('user_profile.index')
+            ->with($this->successAlert('Successfully updated!'));
+    }
+
 
     /**
      * Remove the specified resource from storage.

@@ -72,6 +72,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/image', 'imageEdit')->name('image.edit');
             Route::post('/image', 'imageUpdate')->name('image.update');
             Route::get('/image-remove', 'imageDelete')->name('image.delete');
+            Route::get('/details', 'detailsEdit')->name('details.edit');
+            Route::put('/details', 'detailsUpdate')->name('details.update');
         });
 
     Route::prefix('admin/deposits')

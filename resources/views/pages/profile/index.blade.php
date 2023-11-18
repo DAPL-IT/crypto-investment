@@ -41,7 +41,10 @@
                                             href="{{ route('user_profile.general.edit') }}">Edit General</a>
                                     </li>
                                     @if ($user->user_profile)
-                                        <li class="dropdown-item">Edit Details</li>
+                                        <li class="dropdown-item">
+                                            <a class="d-block" href="{{ route('user_profile.details.edit') }}">Profile
+                                                Details</a>
+                                        </li>
                                     @endif
                                     <li class="dropdown-item">
                                         <a class="d-block" href="{{ route('user_profile.password.edit') }}">
@@ -152,7 +155,8 @@
                                             </div>
                                         @else
                                             <div class="text-center">
-                                                <button class="btn btn-xs btn-primary">Add</button>
+                                                <a href="{{ route('user_profile.details.edit') }}"
+                                                    class="btn btn-xs btn-primary">Add</a>
                                             </div>
                                         @endif
 

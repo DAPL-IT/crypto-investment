@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('first_name', 50)->nullable();
-            $table->string('last_name', 50)->nullable();
+            $table->string('full_name', 100)->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('nationality', 50)->nullable();
             $table->string('nid', 100)->nullable();

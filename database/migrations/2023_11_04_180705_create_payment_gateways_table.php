@@ -15,7 +15,12 @@ return new class extends Migration
             $table->mediumIncrements('id');
             $table->string('name', 100);
             $table->string('name_slug', 250);
+            $table->string('code', 250)->nullable();
+            $table->string('qrcode_dir')->nullable();
+            $table->string('qrcode_file_name')->nullable();
             $table->timestamps();
+
+            $table->index(['id', 'name_slug']);
         });
     }
 
