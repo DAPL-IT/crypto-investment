@@ -25,7 +25,7 @@
                         <li><a href="{{ route('banner_slider.index') }}">Banner</a></li>
                         <li><a href="{{ route('news_slider.index') }}">News</a></li>
                         <li><a href="{{ route('app_settings.index') }}">App</a></li>
-                        <li><a href="#">Gateway</a></li>
+                        {{-- <li><a href="#">Gateway</a></li> --}}
                     </ul>
                 </li>
             @endif
