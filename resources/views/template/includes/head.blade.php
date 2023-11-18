@@ -12,5 +12,5 @@
 <link rel="stylesheet" href="{{ asset('assets/base_template/vendor/toastr/css/toastr.css') }}">
 <link href="{{ asset('assets/base_template/vendor/sweetalert2/dist/sweetalert2.min.css') }}" rel="stylesheet">
 @yield('extra_css_plugin')
-<link rel="stylesheet"href="{{ asset('assets/base_template/css/style.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/base_template/css/style.css') }}" />
 @yield('extra_css')

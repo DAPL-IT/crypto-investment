@@ -18,8 +18,9 @@
             <div class="card">
                 <div class="card-body">
                     <img class="img-fluid img-thumbnail" src="{{ asset('images/assets/binance_qr.png') }}">
-                    <p id="walletAddress">TR5nwgbzRi62yAEU4tK6rgFty3FgfNbN7k</p>
-                    <button onclick="copyText()" class="btn btn-primary">Copy</button>
+                    <p id="walletAddress" class="pt-2 mb-2" style="font-size: 8pt;">TR5nwgbzRi62yAEU4tK6rgFty3FgfNbN7k</p>
+                    <button onclick="copyText()" class="btn btn-xs btn-primary mb-0"><i
+                            class="fa-regular fa-clipboard"></i>&ensp;Copy</button>
                 </div>
             </div>
         </div>
@@ -58,17 +59,18 @@
         </div>
     </div>
 @endsection
+
 @section('extra_script')
-<script>
-    function copyText() {
-        const walletAddress = document.getElementById('walletAddress');
-        const textArea = document.createElement('textarea');
-        textArea.value = walletAddress.textContent;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        alert('Copied to clipboard');
-    }
-</script>
+    <script>
+        function copyText() {
+            const walletAddress = document.getElementById('walletAddress');
+            const textArea = document.createElement('textarea');
+            textArea.value = walletAddress.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            toastr.success("Copied to clipboard!")
+        }
+    </script>
 @endsection
