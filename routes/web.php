@@ -94,4 +94,15 @@ Route::middleware('auth')->group(function () {
             Route::get('/approve/{id}', 'approve')->name('approve');
             Route::get('/reject/{id}', 'reject')->name('reject');
         });
+    
+    Route::prefix('admin/withdraws')
+        ->controller(DepositController::class)
+        ->name('deposit.')
+        ->middleware(['admin'])
+        ->group(function () {
+            Route::get('/', 'index')->name('requests');
+            Route::get('/details/{id}', 'details')->name('details');
+            Route::get('/approve/{id}', 'approve')->name('approve');
+            Route::get('/reject/{id}', 'reject')->name('reject');
+        });    
 });
