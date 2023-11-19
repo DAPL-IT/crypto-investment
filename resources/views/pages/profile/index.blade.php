@@ -151,7 +151,11 @@
                                                     </p>
                                                 </div>
                                                 <div class="col-sm-9 col-7">
-                                                    <small>{{ $user->user_profile->full_name }}</small>
+                                                    @if ($user->user_profile->full_name)
+                                                        <small>{{ $user->user_profile->full_name }}</small>
+                                                    @else
+                                                        <small>N/A</small>
+                                                    @endif
                                                 </div>
                                             </div>
 

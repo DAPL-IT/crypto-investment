@@ -18,14 +18,14 @@
 
                 <li>
                     <a href="{{ route('withdraw.requests') }}">
-                        <span class="fa-solid fa-filter-circle-dollar pr-2"></span>
+                        <span class="fa-solid fa-money-bill-trend-up pr-2"></span>
                         <span class="nav-text">Withdraw Requests</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{ route('user.index') }}">
-                        <span class="fa-solid fa-filter-circle-dollar pr-2"></span>
+                        <span class="fa-solid fa-users-gear pr-2"></span>
                         <span class="nav-text">Users</span>
                     </a>
                 </li>
