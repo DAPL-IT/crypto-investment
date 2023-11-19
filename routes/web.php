@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BannerSliderController;
 use App\Http\Controllers\Admin\NewsSliderController;
 use App\Http\Controllers\Admin\DepositController;
 use App\Http\Controllers\Admin\WithdrawController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashBoardController;
@@ -105,5 +106,14 @@ Route::middleware('auth')->group(function () {
             Route::get('/details/{id}', 'details')->name('details');
             Route::get('/approve/{id}', 'approve')->name('approve');
             Route::get('/reject/{id}', 'reject')->name('reject');
+        });
+
+    Route::prefix('admin/users')
+        ->controller(UserController::class)
+        ->name('user.')
+        ->middleware(['admin'])
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/details/{id}', 'details')->name('details');
         });
 });
