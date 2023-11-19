@@ -38,6 +38,7 @@ class DepositController extends Controller
                     $transaction_brief = UserTransactionBrief::where('user_id', $deposit->user->id)->first();
                     if ($transaction_brief != null) {
                         $transaction_brief->total_deposit += $deposit->amount;
+                        $transaction_brief->total_successful_transaction += 1;
                         $transaction_brief->save();
 
                         $deposit->deposit_status = 1;

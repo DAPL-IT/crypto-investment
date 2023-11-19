@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AppSettingController;
 use App\Http\Controllers\Admin\BannerSliderController;
 use App\Http\Controllers\Admin\NewsSliderController;
 use App\Http\Controllers\Admin\DepositController;
+use App\Http\Controllers\Admin\WithdrawController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashBoardController;
@@ -31,7 +32,7 @@ Route::middleware('auth')->group(function () {
         ->group(function () {
             Route::get('/', 'withdrawIndex')->name('index');
             Route::post('/store', 'withdrawStore')->name('store');
-        });    
+        });
 
     Route::prefix('dashboard')
         ->controller(DashBoardController::class)
@@ -94,15 +95,15 @@ Route::middleware('auth')->group(function () {
             Route::get('/approve/{id}', 'approve')->name('approve');
             Route::get('/reject/{id}', 'reject')->name('reject');
         });
-    
+
     Route::prefix('admin/withdraws')
-        ->controller(DepositController::class)
-        ->name('deposit.')
+        ->controller(WithdrawController::class)
+        ->name('withdraw.')
         ->middleware(['admin'])
         ->group(function () {
             Route::get('/', 'index')->name('requests');
             Route::get('/details/{id}', 'details')->name('details');
             Route::get('/approve/{id}', 'approve')->name('approve');
             Route::get('/reject/{id}', 'reject')->name('reject');
-        });    
+        });
 });
