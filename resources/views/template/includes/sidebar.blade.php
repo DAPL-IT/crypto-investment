@@ -17,6 +17,13 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('withdraw.requests') }}">
+                        <span class="fa-solid fa-filter-circle-dollar pr-2"></span>
+                        <span class="nav-text">Withdraw Requests</span>
+                    </a>
+                </li>
+
+                <li>
                     <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                         <span class="fa-solid fa-sliders pr-2"></span>
                         <span class="nav-text">Settings</span>
