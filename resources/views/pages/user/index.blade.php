@@ -54,7 +54,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('deposit.details', ['id' => $user->id]) }}">
+                                            <a href="{{ route('commission.form', ['user_id' => $user->id]) }}">
                                                 <span class="badge bg-warning text-white">Commission</span>
                                             </a>
                                         </td>

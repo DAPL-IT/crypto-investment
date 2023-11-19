@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\NewsSliderController;
 use App\Http\Controllers\Admin\DepositController;
 use App\Http\Controllers\Admin\WithdrawController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\CommissionConotroller;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashBoardController;
@@ -115,5 +116,15 @@ Route::middleware('auth')->group(function () {
         ->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('/details/{id}', 'details')->name('details');
+        });
+
+    Route::prefix('admin/commissions')
+        ->controller(CommissionConotroller::class)
+        ->name('commission.')
+        ->middleware(['admin'])
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/distribute/form/{user_id}', 'commissionForm')->name('form');
+            Route::post('/store', 'store')->name('store');
         });
 });
