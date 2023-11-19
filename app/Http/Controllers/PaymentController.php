@@ -8,6 +8,8 @@ use App\Traits\AlertTrait;
 use App\Traits\HelperTrait;
 use App\Models\Deposit;
 use App\Models\PaymentGateway;
+use App\Models\UserTransactionBrief;
+use App\Models\Withdraw;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -65,5 +67,47 @@ class PaymentController extends Controller
 
         $deposit->save();
         return back()->with($this->successAlert('Successfully requested!'));
+    }
+
+    public function withdrawIndex ()
+    {
+        return view('withdraw.index');
+    }
+
+    public function withdrawStore (Request $request)
+    {
+        $request->validate(
+            [
+                'amount' => 'required|numeric',
+                'payment_contact' => 'required',
+            ],
+            [
+                'payment_contact.required' => 'Wallet address input field is required',
+            ]
+        );
+
+        $paymentGateway = PaymentGateway::orderBy('id', 'asc')->first();
+        $authUserId = Auth::user()->id;
+        $transactionBrief = UserTransactionBrief::where('user_id', $authUserId)->first();
+
+        if($transactionBrief != null){
+            if($transactionBrief->total_earning >= $request->amount){
+                $withdraw = new Withdraw();
+                $withdraw->amount = $request->amount;
+                $withdraw->user_id = $authUserId;
+                $withdraw->payment_contact = $request->payment_contact;
+                $withdraw->payment_gateway_id = $paymentGateway->id;
+        
+                $withdraw->save();
+                return back()->with($this->successAlert('Successfully requested!'));
+            }
+            else{
+                return back()->with($this->errorAlert('Insufficient balance!'));
+            }
+        }
+
+        else{
+            return back()->with($this->errorAlert('Insufficient balance!'));
+        }
     }
 }

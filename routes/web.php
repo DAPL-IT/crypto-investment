@@ -25,6 +25,14 @@ Route::middleware('auth')->group(function () {
             Route::post('/store', 'store')->name('store');
         });
 
+    Route::prefix('withdraw')
+        ->controller(PaymentController::class)
+        ->name('withdraw.')
+        ->group(function () {
+            Route::get('/', 'withdrawIndex')->name('index');
+            Route::post('/store', 'withdrawStore')->name('store');
+        });    
+
     Route::prefix('dashboard')
         ->controller(DashBoardController::class)
         ->group(function () {

@@ -82,16 +82,18 @@
             </a>
         </div>
         <div class="col-md-3 col-sm-4 col-4  px-1">
-            <div class="card card-coin feature-card">
-                <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
-                    <h2 class="mb-0 font-w700" style="color: rgba(62, 110, 255, 1)">
-                        <i class="fa-solid fa-credit-card" style="font-size: 25pt !important"></i>
-                    </h2>
-                    <p class="mb-0 font-w600 mt-2" style="font-size: 8pt !important">
-                        Withdraw
-                    </p>
+            <a href="{{ route('withdraw.index') }}">
+                <div class="card card-coin feature-card">
+                    <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
+                        <h2 class="mb-0 font-w700" style="color: rgba(62, 110, 255, 1)">
+                            <i class="fa-solid fa-credit-card" style="font-size: 25pt !important"></i>
+                        </h2>
+                        <p class="mb-0 font-w600 mt-2" style="font-size: 8pt !important">
+                            Withdraw
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-md-3 col-sm-4 col-4 px-1">
             <div class="card card-coin feature-card">
