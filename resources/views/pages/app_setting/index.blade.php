@@ -38,7 +38,15 @@
                                 <label class="mb-2 pl-1"><small><b>Background Image</b></small></label>
                                 <input type="file" class="form-control" name="background" accept=".jpg, .jpeg, .png">
                                 <small class="form-text pt-1">Maximum image size allowed: 5Mb,<br>Recommended dimensions:
-                                    1920x1080</small>
+                                    1920x1080
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label class="mb-2 pl-1"><small><b>VIP Promo Image</b></small></label>
+                                <input type="file" class="form-control" name="vip_promo" accept=".jpg, .jpeg, .png">
+                                <small class="form-text pt-1">Maximum image size allowed: 3Mb,<br>Recommended dimensions:
+                                    600x600
+                                </small>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-xs btn-info" type="submit"><i

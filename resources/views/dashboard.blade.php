@@ -121,7 +121,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-sm-4 col-4 px-1">
+        <div class="col-md-3 col-sm-4 col-4 px-1" data-toggle="modal" data-target="#vipSectionModal">
             <div class="card card-coin feature-card">
                 <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
                     <h2 class="mb-0 font-w700" style="color: salmon">
@@ -245,4 +245,21 @@
             </div>
         </div>
     @endif
+
+
+    <div class="modal fade" id="vipSectionModal" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="pr-3 pt-3">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span><i class="fa-regular fa-circle-xmark"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body pt-1">
+                    <img style="width: 100%" class="img img-fluid img-thumbnail"
+                        src="{{ asset($appSetting->vip_promo_image_full_path) }}" alt="vip_promo">
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

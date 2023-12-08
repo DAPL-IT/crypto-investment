@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AppSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -15,6 +16,7 @@ class DashBoardController extends Controller
         $user = User::where('id', Auth::user()->id)->with('user_transaction_brief')->first();
         $banners = BannerSlider::all();
         $newses = NewsSlider::all();
+        $appSetting = AppSetting::orderBy('id', 'desc')->first();
 
         $allNews = '';
         foreach ($newses as $key => $news) {
@@ -24,6 +26,6 @@ class DashBoardController extends Controller
                 $allNews .= $news->news . ' ' . '|' . ' ';
             }
         }
-        return view('dashboard', compact('user', 'banners', 'allNews'));
+        return view('dashboard', compact('user', 'banners', 'allNews', 'appSetting'));
     }
 }

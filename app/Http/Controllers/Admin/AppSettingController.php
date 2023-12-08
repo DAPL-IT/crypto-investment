@@ -94,6 +94,27 @@ class AppSettingController extends Controller
             $appSetting->background_image_file_name = $newFileName;
         }
 
+        if ($request->hasFile('vip_promo')) {
+            if ($appSetting->vip_promo_image_file_name && file_exists($appSetting->vip_promo_image_full_path)) {
+                unlink($appSetting->vip_promo_image_full_path);
+            }
+            $reqFile = $request->file('vip_promo');
+            $fileName = 'vip_promo';
+            $fileExtension = strtolower($reqFile->getClientOriginalExtension());
+            $newFileName = $fileName . '.' . $fileExtension;
+            $fileDir = AppSetting::VIP_PROMO_DIR;
+            try {
+                Image::make($reqFile)
+                    ->resize(400, 400)
+                    ->encode($fileExtension, 80)
+                    ->save($fileDir . $newFileName);
+            } catch (Exception $e) {
+                return back()->with($this->errorAlert('Failed to upload!'));
+            }
+
+            $appSetting->vip_promo_image_dir = $fileDir;
+            $appSetting->vip_promo_image_file_name = $newFileName;
+        }
 
         $appSetting->save();
         return back()->with($this->successAlert('Successfully updated!'));
