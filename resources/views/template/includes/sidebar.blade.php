@@ -42,6 +42,15 @@
                         {{-- <li><a href="#">Gateway</a></li> --}}
                     </ul>
                 </li>
+                <li>
+                    <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                        <span class="fa-solid fa-list-check"></span>
+                        <span class="nav-text">Tasks</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a href="{{ route('tasks.index') }}">All</a></li>
+                    </ul>
+                </li>
             @endif
         </ul>
     </div>

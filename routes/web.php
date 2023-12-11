@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CommissionConotroller;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashBoardController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -126,5 +127,12 @@ Route::middleware('auth')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('/distribute/form/{user_id}', 'commissionForm')->name('form');
             Route::post('/store', 'store')->name('store');
+        });
+
+    Route::prefix('tasks')
+        ->controller(TaskController::class)
+        ->name('tasks.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
         });
 });
