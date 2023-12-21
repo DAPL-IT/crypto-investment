@@ -33,16 +33,16 @@
             <div class="card">
                 <div class="card-body border-0 py-md-3 py-2 px-4">
                     <h6 class="mb-1 text-primary">Total Earnings</h6>
-                    <span class="font-8">{{ $user->user_transaction_brief->total_earning ?? '0' }}</span>
+                    <span class="font-8">${{ $user->user_transaction_brief->total_earning ?? '0' }}</span>
                 </div>
                 <div class="card-footer pt-0 pb-0 text-center">
                     <div class="row">
                         <div class="col-4 py-2 border-right px-1">
-                            <h6 class="mb-1 text-primary">{{ $user->user_transaction_brief->total_withdraw ?? '0' }}</h6>
+                            <h6 class="mb-1 text-primary">${{ $user->user_transaction_brief->total_withdraw ?? '0' }}</h6>
                             <span class="font-8">Withdraws</span>
                         </div>
                         <div class="col-4 py-2 border-right px-1">
-                            <h6 class="mb-1 text-primary">{{ $user->user_transaction_brief->total_deposit ?? '0' }}</h6>
+                            <h6 class="mb-1 text-primary">${{ $user->user_transaction_brief->total_deposit ?? '0' }}</h6>
                             <span class="font-8">Deposits</span>
                         </div>
                         <div class="col-4 py-2">
@@ -55,17 +55,35 @@
         </div>
     </div>
     <div class="row px-1">
-        <div class="col-md-3 col-sm-4 col-4  px-1">
-            <div class="card card-coin feature-card">
-                <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
-                    <h2 class="text-info mb-0 font-w700">
-                        <i class="fa-solid fa-address-card" style="font-size: 25pt !important"></i>
-                    </h2>
-                    <p class="mb-0 font-w600 mt-2" style="font-size: 8pt !important">
-                        Personal Info
-                    </p>
+        <div class="col-md-3 col-sm-4 col-4 px-1">
+            <a href="{{url('/profile/company')}}">
+                <div class="card card-coin feature-card">
+                    <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
+                        <h2 class="mb-0 font-w700 text-primary">
+                            <span class="material-icons" style="font-size: 25pt !important">
+                                difference
+                            </span>
+                        </h2>
+                        <p class="mb-0 font-w600 mt-0" style="font-size: 8pt !important">
+                            Company Info
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-4 col-4  px-1">
+            <a href="{{url('/profile')}}">
+                <div class="card card-coin feature-card">
+                    <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
+                        <h2 class="text-info mb-0 font-w700">
+                            <i class="fa-solid fa-address-card" style="font-size: 25pt !important"></i>
+                        </h2>
+                        <p class="mb-0 font-w600 mt-2" style="font-size: 8pt !important">
+                            Personal Info
+                        </p>
+                    </div>
+                </div>
+            </a>
         </div>
         <div class="col-md-3 col-sm-4 col-4  px-1">
             <a href="{{ route('deposit.index') }}">
@@ -95,7 +113,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-md-3 col-sm-4 col-4 px-1">
+        {{-- <div class="col-md-3 col-sm-4 col-4 px-1">
             <div class="card card-coin feature-card">
                 <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
                     <h2 class="mb-0 font-w700 text-primary">
@@ -108,7 +126,7 @@
                     </p>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="col-md-3 col-sm-4 col-4 px-1">
             <div class="card card-coin feature-card">
                 <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
@@ -134,16 +152,18 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-4 col-4 px-1">
-            <div class="card card-coin feature-card">
-                <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
-                    <h2 class="mb-0 font-w700 text-warning">
-                        <i class="fa-solid fa-money-bill-transfer" style="font-size: 25pt !important"></i>
-                    </h2>
-                    <p class="mb-0 font-w600 mt-2" style="font-size: 8pt !important">
-                        Transaction
-                    </p>
+            <a href="{{url('/transaction')}}">
+                <div class="card card-coin feature-card">
+                    <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
+                        <h2 class="mb-0 font-w700 text-warning">
+                            <i class="fa-solid fa-money-bill-transfer" style="font-size: 25pt !important"></i>
+                        </h2>
+                        <p class="mb-0 font-w600 mt-2" style="font-size: 8pt !important">
+                            Transaction
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-md-3 col-sm-4 col-4 px-1">
             <div class="card card-coin feature-card">
@@ -194,16 +214,18 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-4 col-4 px-1">
-            <div class="card card-coin feature-card">
-                <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
-                    <h2 class="mb-0 font-w700 text-info">
-                        <i class="fa-solid fa-download" style="font-size: 25pt !important"></i>
-                    </h2>
-                    <p class="mb-0 font-w600 mt-2" style="font-size: 8pt !important">
-                        Download
-                    </p>
+            <a href="https://drive.google.com/file/d/1nxtzLtAlyPuDOa0mRmw_AiBEbPs3lWp0/view" target="_blank">
+                <div class="card card-coin feature-card">
+                    <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
+                        <h2 class="mb-0 font-w700 text-info">
+                            <i class="fa-solid fa-download" style="font-size: 25pt !important"></i>
+                        </h2>
+                        <p class="mb-0 font-w600 mt-2" style="font-size: 8pt !important">
+                            Download
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 
@@ -256,8 +278,8 @@
                     </button>
                 </div>
                 <div class="modal-body pt-1">
-                    <img style="width: 100%" class="img img-fluid img-thumbnail"
-                        src="{{ asset($appSetting->vip_promo_image_full_path) }}" alt="vip_promo">
+                    {{-- <img style="width: 100%" class="img img-fluid img-thumbnail"
+                        src="{{ asset($appSetting->vip_promo_image_full_path) }}" alt="vip_promo"> --}}
                 </div>
             </div>
         </div>

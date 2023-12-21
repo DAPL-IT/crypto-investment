@@ -16,7 +16,8 @@ class DashBoardController extends Controller
         $user = User::where('id', Auth::user()->id)->with('user_transaction_brief')->first();
         $banners = BannerSlider::all();
         $newses = NewsSlider::all();
-        $appSetting = AppSetting::orderBy('id', 'desc')->first();
+        // $appSetting = AppSetting::orderBy('id', 'desc')->first();
+        $appSetting = '';
 
         $allNews = '';
         foreach ($newses as $key => $news) {
