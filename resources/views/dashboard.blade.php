@@ -113,20 +113,22 @@
                 </div>
             </a>
         </div>
-        {{-- <div class="col-md-3 col-sm-4 col-4 px-1">
-            <div class="card card-coin feature-card">
-                <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
-                    <h2 class="mb-0 font-w700 text-primary">
-                        <span class="material-icons" style="font-size: 25pt !important">
-                            difference
-                        </span>
-                    </h2>
-                    <p class="mb-0 font-w600 mt-0" style="font-size: 8pt !important">
-                        Order History
-                    </p>
+        <div class="col-md-3 col-sm-4 col-4 px-1">
+            <a href="{{ url('/tasks') }}">
+                <div class="card card-coin feature-card">
+                    <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
+                        <h2 class="mb-0 font-w700 text-primary">
+                            <span class="material-icons" style="font-size: 25pt !important">
+                                difference
+                            </span>
+                        </h2>
+                        <p class="mb-0 font-w600 mt-0" style="font-size: 8pt !important">
+                            Order History
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </div> --}}
+            </a>
+        </div>
         <div class="col-md-3 col-sm-4 col-4 px-1">
             <div class="card card-coin feature-card">
                 <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
@@ -278,8 +280,8 @@
                     </button>
                 </div>
                 <div class="modal-body pt-1">
-                    {{-- <img style="width: 100%" class="img img-fluid img-thumbnail"
-                        src="{{ asset($appSetting->vip_promo_image_full_path) }}" alt="vip_promo"> --}}
+                    <img style="width: 100%" class="img img-fluid img-thumbnail"
+                        src="{{ asset($appSetting->vip_promo_image_full_path) }}" alt="vip_promo">
                 </div>
             </div>
         </div>
