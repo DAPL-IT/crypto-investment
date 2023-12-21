@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CommissionConotroller;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserProfileController;
@@ -87,6 +88,13 @@ Route::middleware('auth')->group(function () {
             Route::get('/details', 'detailsEdit')->name('details.edit');
             Route::put('/details', 'detailsUpdate')->name('details.update');
             Route::get('/company', 'companyInfo')->name('company.info');
+        });
+
+    Route::prefix('transaction')
+        ->controller(TransactionController::class)
+        ->name('user_transaction.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
         });
 
     Route::prefix('admin/deposits')
