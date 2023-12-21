@@ -271,4 +271,9 @@ class UserProfileController extends Controller
     {
         //
     }
+
+    public function companyInfo ()
+    {
+        return view('pages.profile.company');
+    }
 }
