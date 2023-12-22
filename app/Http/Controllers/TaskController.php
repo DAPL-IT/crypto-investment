@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Deposit;
+use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -11,7 +15,10 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('pages.task.index');
+        $user = User::where('id', Auth::user()->id)->with('user_transaction_brief')->first();
+        //dd($user);
+        $tasks = Task::paginate(5);
+        return view('pages.task.index', compact('tasks', 'user'));
     }
 
     /**

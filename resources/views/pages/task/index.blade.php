@@ -14,27 +14,26 @@
         </div>
     </div>
     <div class="row px-1">
+        @if ($user->user_transaction_brief != null && $user->user_transaction_brief->total_deposit > 0)
+        @foreach ($tasks as $task)
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-                            <h6>Title Lorem ipsum dolor sit amet.</h6>
+                            <h6>{{$task->title}}</h6>
                         </div>
                         <div class="col-md-3">
-                            <img src="https://as1.ftcdn.net/v2/jpg/02/05/26/62/1000_F_205266292_vsbwsjJwUiYMMPWLhW9DufnSndGU39Yo.jpg"
+                            <img src="{{asset('images/tasks/'.$task->image)}}"
                                 alt="" class="img img-fluid">
                         </div>
                         <div class="col-md-9 mt-md-0 mt-2">
                             <div>
-                                <small>Short Description Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Fugiat
-                                    quisquam aliquid ut voluptatem expedita dolores.
-                                </small>
+                                <small>{!!$task->short_description!!}</small>
                             </div>
-                            <div>
+                            {{-- <div>
                                 <small><b>$14.5 X 5</b></small>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>
@@ -50,7 +49,11 @@
                                         </p>
                                     </div>
                                     <div class="col-sm-8 col-6">
-                                        <small>01234567891</small>
+                                        @php
+                                            $orderNumber = rand(10000, 100000000);
+                                            $currentDateTime = Carbon\Carbon::now()->format('Y-m-d H:i');
+                                        @endphp
+                                        <small>{{$orderNumber}}</small>
                                     </div>
                                 </div>
                                 <div class="row mb-0">
@@ -61,7 +64,7 @@
                                         </p>
                                     </div>
                                     <div class="col-sm-8 col-6">
-                                        <small>2023-12-12 12:12 AM</small>
+                                        <small>{{$currentDateTime}}</small>
                                     </div>
                                 </div>
                                 <div class="row mb-0">
@@ -72,10 +75,10 @@
                                         </p>
                                     </div>
                                     <div class="col-sm-8 col-6">
-                                        <small>$100</small>
+                                        <small>${{$task->order_total}}</small>
                                     </div>
                                 </div>
-                                <div class="row mb-0">
+                                {{-- <div class="row mb-0">
                                     <div class="col-sm-4 col-6">
                                         <p class="f-w-500 pb-0 mb-0">
                                             <small>Comission Fee</small>
@@ -85,104 +88,30 @@
                                     <div class="col-sm-8 col-6">
                                         <small>$1</small>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 mt-3">
-                            <button class="btn btn-sm btn-primary">Grab Now</button>
+                            <a href="#" class="btn btn-sm btn-primary">Grab Now</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12">
-                            <h6>Title Lorem ipsum dolor sit amet.</h6>
-                        </div>
-                        <div class="col-md-3">
-                            <img src="https://as1.ftcdn.net/v2/jpg/02/05/26/62/1000_F_205266292_vsbwsjJwUiYMMPWLhW9DufnSndGU39Yo.jpg"
-                                alt="" class="img img-fluid">
-                        </div>
-                        <div class="col-md-9 mt-md-0 mt-2">
-                            <div>
-                                <small>Short Description Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Fugiat
-                                    quisquam aliquid ut voluptatem expedita dolores.
-                                </small>
-                            </div>
-                            <div>
-                                <small><b>$14.5 X 5</b></small>
-                            </div>
-
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="pt-0 profile-personal-info">
-                                <div class="row mb-0">
-                                    <div class="col-sm-4 col-6">
-                                        <p class="f-w-500 pb-0 mb-0">
-                                            <small>Order Number</small>
-                                            <small class="pull-right">:</small>
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-8 col-6">
-                                        <small>01234567891</small>
-                                    </div>
-                                </div>
-                                <div class="row mb-0">
-                                    <div class="col-sm-4 col-6">
-                                        <p class="f-w-500 pb-0 mb-0">
-                                            <small>Order Time</small>
-                                            <small class="pull-right">:</small>
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-8 col-6">
-                                        <small>2023-12-12 12:12 AM</small>
-                                    </div>
-                                </div>
-                                <div class="row mb-0">
-                                    <div class="col-sm-4 col-6">
-                                        <p class="f-w-500 pb-0 mb-0">
-                                            <small>Order Total</small>
-                                            <small class="pull-right">:</small>
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-8 col-6">
-                                        <small>$100</small>
-                                    </div>
-                                </div>
-                                <div class="row mb-0">
-                                    <div class="col-sm-4 col-6">
-                                        <p class="f-w-500 pb-0 mb-0">
-                                            <small>Comission Fee</small>
-                                            <small class="pull-right">:</small>
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-8 col-6">
-                                        <small>$1</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 mt-3">
-                            <button class="btn btn-sm btn-primary">Grab Now</button>
-                        </div>
-                    </div>
-                </div>
+        @endforeach
+        @else
+        <div class="col-lg-12 col-md-12">
+            <div class="card text-center">
+                <h3 style="color: red">Not available for you!!</h3>
+                <span style="color: green">Please make a deposit first.</span>
             </div>
         </div>
+        @endif
     </div>
 
-    <div class="row px-1">
+    {{-- <div class="row px-1">
         <nav class="col-12" style="display: flex; justify-content: center; ">
             <ul class="pagination pagination-sm">
                 <li class="page-item page-indicator">
@@ -200,5 +129,5 @@
                 </li>
             </ul>
         </nav>
-    </div>
+    </div> --}}
 @endsection
