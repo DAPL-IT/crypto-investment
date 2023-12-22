@@ -14,5 +14,9 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(1)->create();
         \App\Models\PaymentGateway::factory(1)->create();
+
+        $this->call([
+            TaskSeeder::class,
+        ]);
     }
 }
