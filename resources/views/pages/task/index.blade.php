@@ -23,6 +23,7 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
+                    @if ($taskRecord == null)
                     <div class="row">
                         <div class="col-12">
                             <h6>{{$task->title}}</h6>
@@ -96,6 +97,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                     <div class="row">
                         <div class="col-12 mt-3">
                             @if ($taskRecord != null)
