@@ -5,67 +5,55 @@ namespace App\Http\Controllers;
 use App\Models\Deposit;
 use App\Models\Task;
 use App\Models\User;
+use App\Models\TaskRecord;
+use App\Models\UserTransactionBrief;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Traits\AlertTrait;
+use App\Traits\HelperTrait;
+use Carbon\Carbon;
 
 class TaskController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    use AlertTrait, HelperTrait;
+
     public function index()
     {
         $user = User::where('id', Auth::user()->id)->with('user_transaction_brief')->first();
-        //dd($user);
         $tasks = Task::paginate(5);
         return view('pages.task.index', compact('tasks', 'user'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function grabTask ($id)
     {
-        //
-    }
+        $task = Task::find($id);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        if($task != null){
+            $today = Carbon::now()->startOfDay();
+            $taskRecord = TaskRecord::where('task_id', $id)->where('user_id', Auth::user()->id)->whereDate('created_at', $today)->first();
+            if($taskRecord != null){
+                return back()->with($this->errorAlert('Already Completed!'));
+            }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+            //Calculate Cimmission
+            $commission = 0.2;
+            //Calculate Cimmission
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+            $task_record = new TaskRecord();
+            $task_record->task_id = $id;
+            $task_record->user_id = Auth::user()->id;
+            $task_record->commission = $commission;
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+            $transactionRecord = UserTransactionBrief::where('user_id', Auth::user()->id)->first();
+            $transactionRecord->total_earning = $transactionRecord->total_earning + $commission;
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+            $transactionRecord->save();
+            $task_record->save();
+            return back()->with($this->successAlert('Completed!'));
+        }
+
+        else{
+            return back()->with($this->errorAlert('Failed to complete!'));
+        }
     }
 }

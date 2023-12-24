@@ -16,6 +16,10 @@
     <div class="row px-1">
         @if ($user->user_transaction_brief != null && $user->user_transaction_brief->total_deposit > 0)
         @foreach ($tasks as $task)
+        @php
+            $today = Carbon\Carbon::now()->startOfDay();
+            $taskRecord = App\Models\TaskRecord::where('user_id', $user->id)->where('task_id', $task->id)->whereDate('created_at', $today)->first();
+        @endphp
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
@@ -94,7 +98,11 @@
                     </div>
                     <div class="row">
                         <div class="col-12 mt-3">
-                            <a href="#" class="btn btn-sm btn-primary">Grab Now</a>
+                            @if ($taskRecord != null)
+                            <a class="btn btn-sm btn-success">Completed</a>
+                            @else
+                            <a href="{{ url('tasks/complete/'.$task->id) }}" class="btn btn-sm btn-primary">Grab Now</a>
+                            @endif
                         </div>
                     </div>
                 </div>

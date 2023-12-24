@@ -143,5 +143,6 @@ Route::middleware('auth')->group(function () {
         ->name('tasks.')
         ->group(function () {
             Route::get('/', 'index')->name('index');
+            Route::get('/complete/{id}', 'grabTask')->name('grab');
         });
 });

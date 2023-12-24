@@ -192,6 +192,7 @@
             </div>
         </div> --}}
         <div class="col-md-3 col-sm-4 col-4 px-1">
+            <a href="https://t.me/yeulp" target="_blank">
             <div class="card card-coin feature-card">
                 <div class="card-body text-center p-2 d-flex flex-column justify-content-center align-items-center">
                     <h2 class="mb-0 font-w700 text-success">
@@ -202,6 +203,7 @@
                     </p>
                 </div>
             </div>
+            </a>
         </div>
         <div class="col-md-3 col-sm-4 col-4 px-1">
             <div class="card card-coin feature-card">
