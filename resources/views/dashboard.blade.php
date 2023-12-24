@@ -46,7 +46,7 @@
                             <span class="font-8">Deposits</span>
                         </div>
                         <div class="col-4 py-2">
-                            <h6 class="mb-1 text-primary px-1">0</h6>
+                            <h6 class="mb-1 text-primary px-1">{{ $remainingTask }}</h6>
                             <span class="font-8">Tasks</span>
                         </div>
                     </div>

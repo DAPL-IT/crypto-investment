@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\BannerSlider;
 use App\Models\NewsSlider;
+use App\Models\TaskRecord;
+use Carbon\Carbon;
 
 class DashBoardController extends Controller
 {
@@ -17,7 +19,6 @@ class DashBoardController extends Controller
         $banners = BannerSlider::all();
         $newses = NewsSlider::all();
         $appSetting = AppSetting::orderBy('id', 'desc')->first();
-        // $appSetting = '';
 
         $allNews = '';
         foreach ($newses as $key => $news) {
@@ -27,6 +28,9 @@ class DashBoardController extends Controller
                 $allNews .= $news->news . ' ' . '|' . ' ';
             }
         }
-        return view('dashboard', compact('user', 'banners', 'allNews', 'appSetting'));
+        $today = Carbon::now()->startOfDay();
+        $taskCount = TaskRecord::where('user_id', Auth::user()->id)->whereDate('created_at', $today)->count();
+        $remainingTask = 4-$taskCount;
+        return view('dashboard', compact('user', 'banners', 'allNews', 'appSetting', 'remainingTask'));
     }
 }
