@@ -39,12 +39,11 @@
                                         </label>
                                     </div>
                                 </div>
-                                <!--@if (Route::has('password.request'))-->
-                                <!--    <div class="form-group">-->
-                                <!--        <a href="{{ route('password.request') }}"><small>Forgot-->
-                                <!--                Password?</small></a>-->
-                                <!--    </div>-->
-                                <!--@endif-->
+                                @if (Route::has('custom.forgot.password'))
+                                <div class="form-group">
+                                    <a href="{{ route('custom.forgot.password') }}"><small>Forgot Password?</small></a>
+                                </div>
+                                @endif
                             </div>
                         </div>
                         <div class="form-group col-12">

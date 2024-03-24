@@ -57,3 +57,6 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
 });
+
+Route::get('user/forgot-password-request', [PasswordController::class, 'customForgotPasswordForm'])->name('custom.forgot.password');
+Route::post('user/forgot-password-mail', [PasswordController::class, 'customForgotPasswordMail'])->name('custom.forgot.password.mail');

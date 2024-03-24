@@ -38,7 +38,7 @@ class TaskController extends Controller
             //Calculate Cimmission
             $userTransactionRecord = UserTransactionBrief::where('user_id', Auth::user()->id)->first();
             $totalDeposit = $userTransactionRecord->total_deposit;
-            $percentage = $totalDeposit * 0.00416;
+            $percentage = $totalDeposit * 0.0025; //30%=>(0.3/30)/4
             $commission = round($percentage, 2);
             //Calculate Cimmission
 
