@@ -81,7 +81,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $allRequests->links() }}
                     @endif
                 </div>
             </div>
